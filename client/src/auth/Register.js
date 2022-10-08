@@ -1,4 +1,5 @@
 import { Fragment, useState } from "react";
+import RegisterForm from "../components/RegisterForm";
 
 const Register = () => {
     const [nameInput, setNameInput] = useState("");
@@ -19,37 +20,24 @@ const Register = () => {
 
     const formSubmitHandler = (event) => {
         event.preventDefault();
-        console.log(nameInput, emailInput, passwordInput);
+
+        setNameInput("");
+        setEmailInput("");
+        setPasswordInput("");
     };
 
     return (
-        <Fragment className="registerPage">
-            <h1>Sign-up</h1>
-            <form onSubmit={formSubmitHandler}>
-                <label htmlFor="name">Name</label>
-                <input
-                    type="text"
-                    id="name"
-                    onChange={nameInputHandler}
-                    value={nameInput}
-                />
-                <label htmlFor="email">Email</label>
-                <input
-                    type="email"
-                    id="email"
-                    onChange={emailInputHandler}
-                    value={emailInput}
-                />
-                <label htmlFor="password">Password</label>
-                <input
-                    type="password"
-                    id="password"
-                    onChange={passwordInputHandler}
-                    value={passwordInput}
-                />
-
-                <button type="submit">Register</button>
-            </form>
+        <Fragment>
+            <h1>Register</h1>
+            <RegisterForm
+                nameInput={nameInput}
+                emailInput={emailInput}
+                passwordInput={passwordInput}
+                nameInputHandler={nameInputHandler}
+                emailInputHandler={emailInputHandler}
+                passwordInputHandler={passwordInputHandler}
+                formSubmitHandler={formSubmitHandler}
+            />
         </Fragment>
     );
 };
