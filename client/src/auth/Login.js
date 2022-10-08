@@ -19,11 +19,14 @@ const Login = () => {
         event.preventDefault();
 
         try {
-            await login({
+            let res = await login({
                 emailInput,
                 passwordInput,
             });
             toast.success("Logged in!");
+            if (res.data) {
+                console.log("token...");
+            }
         } catch (err) {
             if (err.response.status === 400) {
                 toast.error(err.response.data);
