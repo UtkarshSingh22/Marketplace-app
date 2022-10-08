@@ -1,4 +1,5 @@
 import { Fragment, useState } from "react";
+import axios from "axios";
 import RegisterForm from "../components/RegisterForm";
 
 const Register = () => {
@@ -20,6 +21,8 @@ const Register = () => {
 
     const formSubmitHandler = (event) => {
         event.preventDefault();
+
+        console.log(nameInput, emailInput, passwordInput);
 
         setNameInput("");
         setEmailInput("");
