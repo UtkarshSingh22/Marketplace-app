@@ -1,5 +1,5 @@
 import { Fragment, useState } from "react";
-import axios from "axios";
+import { register } from "../actions/auth";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import RegisterForm from "../components/RegisterForm";
@@ -27,12 +27,11 @@ const Register = () => {
         event.preventDefault();
 
         try {
-            await axios.post(`${process.env.REACT_APP_API}/register`, {
-                name: nameInput,
-                email: emailInput,
-                password: passwordInput,
+            await register({
+                nameInput,
+                emailInput,
+                passwordInput,
             });
-
             toast.success("Registered! Please login");
             navigate("/login");
         } catch (err) {
