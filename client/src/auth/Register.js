@@ -19,10 +19,22 @@ const Register = () => {
         setPasswordInput(event.target.value);
     };
 
-    const formSubmitHandler = (event) => {
+    const formSubmitHandler = async (event) => {
         event.preventDefault();
 
-        console.log(nameInput, emailInput, passwordInput);
+        try {
+            const response = await axios.post(
+                "http://localhost:4000/api/register",
+                {
+                    name: nameInput,
+                    email: emailInput,
+                    password: passwordInput,
+                }
+            );
+            console.log("Register User ===>", response);
+        } catch (err) {
+            console.log(err);
+        }
 
         setNameInput("");
         setEmailInput("");
