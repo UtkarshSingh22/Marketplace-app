@@ -23,7 +23,11 @@ const Navigation = () => {
                     <Link to="/register">Register</Link>
                 </Fragment>
             )}
-            {loggedInUser && <a onClick={logoutHandler}>Logout</a>}
+            {loggedInUser && (
+                <p onClick={logoutHandler}>
+                    Logout
+                </p>
+            )}
         </div>
     );
 };

@@ -33,7 +33,7 @@ const Login = () => {
             if (res.data) {
                 window.localStorage.setItem("auth", JSON.stringify(res.data));
                 dispatch(authActions.loggedInUser(res.data));
-                navigate("/");
+                navigate("/dashboard");
             }
         } catch (err) {
             if (err.response.status === 400) {
