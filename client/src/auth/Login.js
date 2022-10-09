@@ -25,7 +25,7 @@ const Login = () => {
             });
             toast.success("Logged in!");
             if (res.data) {
-                console.log("token...");
+                console.log(res.data);
             }
         } catch (err) {
             if (err.response.status === 400) {

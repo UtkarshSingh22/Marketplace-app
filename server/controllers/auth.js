@@ -1,4 +1,5 @@
 import User from "../models/user";
+import jwt from "jsonwebtoken";
 
 exports.register = async (req, res, next) => {
     const { name, email, password } = req.body;
@@ -56,6 +57,23 @@ exports.login = async (req, res, next) => {
             if (!match || err) {
                 return res.status(400).send("You entered the wrong password.");
             }
+
+            //generate a token
+
+            let token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET, {
+                expiresIn: "1d",
+            });
+
+            res.json({
+                token,
+                user: {
+                    _id: user._id,
+                    name: user.name,
+                    email: user.email,
+                    createdAt: user.createdAt,
+                    updatedAt: user.updatedAt,
+                },
+            });
         });
     } catch (err) {
         console.log("Login error", err);
