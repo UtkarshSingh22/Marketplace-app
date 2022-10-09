@@ -1,9 +1,15 @@
 import { Fragment, useState } from "react";
 import { toast } from "react-toastify";
 import { login } from "../actions/auth";
+import { useDispatch } from "react-redux";
+import { authActions } from "../store/slices/auth";
+import { useNavigate } from "react-router-dom";
 import LoginForm from "../components/LoginForm";
 
 const Login = () => {
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+
     const [emailInput, setEmailInput] = useState("");
     const [passwordInput, setPasswordInput] = useState("");
 
@@ -25,7 +31,9 @@ const Login = () => {
             });
             toast.success("Logged in!");
             if (res.data) {
-                console.log(res.data);
+                window.localStorage.setItem("auth", JSON.stringify(res.data));
+                dispatch(authActions.loggedInUser(res.data));
+                navigate("/");
             }
         } catch (err) {
             if (err.response.status === 400) {
