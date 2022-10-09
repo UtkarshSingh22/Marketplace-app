@@ -1,6 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialAuthState = {};
+let initialAuthState;
+
+if (window.localStorage.getItem("auth")) {
+    initialAuthState = JSON.parse(window.localStorage.getItem("auth"));
+} else {
+    initialAuthState = null;
+}
 
 const authSlice = createSlice({
     name: "authentication",
@@ -9,8 +15,8 @@ const authSlice = createSlice({
         loggedInUser(state, action) {
             return { ...state, ...action.payload };
         },
-        logout(state, action) {
-            return action.payload;
+        logout(state) {
+            return (state = null);
         },
         default(state) {
             return state;
