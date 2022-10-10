@@ -1,10 +1,11 @@
 import { Fragment } from "react";
+import ConnectNav from "../components/ConnectNav";
 import DashboardNav from "../components/DashboardNav";
 
 const Dashboard = () => {
     return (
         <Fragment>
-            <h1>Dashboard</h1>
+            <ConnectNav />
 
             <DashboardNav />
             <div>
