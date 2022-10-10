@@ -23,9 +23,7 @@ const LoginForm = ({
                 value={passwordInput}
             />
 
-            <button disabled={!emailInput || !passwordInput} type="submit">
-                Sign up
-            </button>
+            <button type="submit">Sign in</button>
         </form>
     );
 };
