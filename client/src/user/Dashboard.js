@@ -1,4 +1,5 @@
 import { Fragment } from "react";
+import { Link } from "react-router-dom";
 import ConnectNav from "../components/ConnectNav";
 import DashboardNav from "../components/DashboardNav";
 
@@ -9,7 +10,10 @@ const Dashboard = () => {
 
             <DashboardNav />
             <div>
-                <p>Show all bookings and a button to browse hotels</p>
+                <h2>Your Bookings</h2>
+            </div>
+            <div>
+                <Link to='/'>Browse Hotels</Link>
             </div>
         </Fragment>
     );

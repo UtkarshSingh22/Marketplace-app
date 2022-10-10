@@ -17,17 +17,16 @@ const Navigation = () => {
     return (
         <div>
             <Link to="/">Home</Link>
+
+            {loggedInUser && <Link to="/dashboard">Dashboard</Link>}
+
             {!loggedInUser && (
                 <Fragment>
                     <Link to="/login">Login</Link>
                     <Link to="/register">Register</Link>
                 </Fragment>
             )}
-            {loggedInUser && (
-                <p onClick={logoutHandler}>
-                    Logout
-                </p>
-            )}
+            {loggedInUser && <p onClick={logoutHandler}>Logout</p>}
         </div>
     );
 };
