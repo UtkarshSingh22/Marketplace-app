@@ -1,5 +1,6 @@
 import express from "express";
 import authRouter from "./routes/auth";
+import stripeRouter from "./routes/stripe";
 import cors from "cors";
 import mongoose from "mongoose";
 const morgan = require("morgan");
@@ -22,6 +23,7 @@ app.use(express.json());
 
 //routers
 app.use("/api", authRouter);
+app.use("/api", stripeRouter);
 
 const port = process.env.PORT || 8000;
 app.listen(port, () => console.log(`Server running on port ${port}`));
