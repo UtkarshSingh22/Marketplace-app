@@ -9,6 +9,7 @@ import Dashboard from "./user/Dashboard";
 import PrivateRoute from "./components/PrivateRoute";
 import DashboardSeller from "./user/DashboardSeller";
 import NewHotel from "./hotels/NewHotel";
+import ConnectPayouts from "./payments/ConnectPayouts";
 
 function App() {
     return (
@@ -32,6 +33,14 @@ function App() {
                     element={
                         <PrivateRoute redirectTo={"/login"}>
                             <DashboardSeller />
+                        </PrivateRoute>
+                    }
+                />
+                <Route
+                    path="/connect-payouts"
+                    element={
+                        <PrivateRoute redirectTo={"/login"}>
+                            <ConnectPayouts />
                         </PrivateRoute>
                     }
                 />
