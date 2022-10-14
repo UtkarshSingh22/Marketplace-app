@@ -22,9 +22,6 @@ const userSchema = new Schema(
             max: 64,
             required: true,
         },
-        stripe_account_id: "",
-        stripe_seller: {},
-        stripeSession: {},
     },
     { timeseries: true }
 );

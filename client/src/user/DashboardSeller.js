@@ -1,25 +1,16 @@
-import { Fragment, useState } from "react";
+import { Fragment } from "react";
 import ConnectNav from "../components/ConnectNav";
 import DashboardNav from "../components/DashboardNav";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { createConnectAccount } from "../actions/stripe";
-import { toast } from "react-toastify";
 
 const DashboardSeller = () => {
     const { auth } = useSelector((state) => ({ ...state }));
 
-    const [isLoading, setIsLoading] = useState(false);
+    const navigate = useNavigate();
 
     const payoutClickHandler = async () => {
-        setIsLoading(true);
-        try {
-            let response = await createConnectAccount(auth.token);
-            setIsLoading(false);
-        } catch (err) {
-            toast.error("Stripe connect failed, Try again.");
-            setIsLoading(false);
-        }
+        navigate("/connect-payouts");
     };
 
     const connected = () => (
@@ -44,9 +35,7 @@ const DashboardSeller = () => {
                 MERN partners with stripe to transfer earnings to your bank
                 account
             </p>
-            <button disabled={isLoading} onClick={payoutClickHandler}>
-                {isLoading ? "Processing..." : "Setup Payouts"}
-            </button>
+            <button onClick={payoutClickHandler}>Setup Payouts</button>
             <p>
                 You'll be redirected to Stripe to complete the onboarding
                 process.
@@ -59,10 +48,7 @@ const DashboardSeller = () => {
             <ConnectNav />
 
             <DashboardNav />
-            {auth &&
-            auth.user &&
-            auth.user.stripe_seller &&
-            auth.user.stripe_seller.charges_enabled
+            {auth && auth.user && auth.user.connectedForPayouts
                 ? connected()
                 : notConnected()}
         </Fragment>
