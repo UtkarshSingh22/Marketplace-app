@@ -28,11 +28,12 @@ const ConnectPayouts = () => {
 
     const formSubmitHandler = async () => {
         try {
-            let response = await connectPayouts({ auth, accountNum, ifsc });
-            toast.success("You're account is added successfully.");
+            const email = auth.user.email;
+            await connectPayouts({ email, accountNum, ifsc });
+            toast.success("You're bank account is added successfully.");
             navigate("/dashboard");
         } catch (err) {
-            toast.error("Something went wrong, Please try again.");
+            toast.error(err);
         }
     };
 
