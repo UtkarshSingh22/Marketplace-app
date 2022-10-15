@@ -12,6 +12,9 @@ const NewHotel = () => {
         to: "",
         bed: "",
     });
+    const [preview, setPreview] = useState(
+        "https://via.placeholder.com/100x100.png?text=PREVIEW"
+    );
 
     const { title, content, location, image, price, from, to, bed } = values;
 
@@ -19,7 +22,11 @@ const NewHotel = () => {
 
     const imageChangeHandler = (event) => {};
 
-    const changeHandler = (event) => {};
+    const changeHandler = (event) => {
+        setValues((prevState) => {
+            return { ...prevState, [event.target.name]: event.target.value };
+        });
+    };
 
     const hotelForm = () => {
         return (
@@ -34,6 +41,39 @@ const NewHotel = () => {
                         hidden
                     />
                 </label>
+
+                <input
+                    type="text"
+                    name="title"
+                    onChange={changeHandler}
+                    placeholder="Title"
+                    value={title}
+                />
+
+                <textarea
+                    name="content"
+                    onChange={changeHandler}
+                    placeholder="Content"
+                    value={content}
+                />
+
+                <input
+                    type="number"
+                    name="price"
+                    onChange={changeHandler}
+                    placeholder="Price"
+                    value={price}
+                />
+
+                <input
+                    type="number"
+                    name="bed"
+                    onChange={changeHandler}
+                    placeholder="Number of beds"
+                    value={bed}
+                />
+
+                <button type="submit">Save</button>
             </form>
         );
     };
