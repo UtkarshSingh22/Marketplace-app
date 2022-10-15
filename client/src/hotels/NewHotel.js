@@ -20,7 +20,13 @@ const NewHotel = () => {
 
     const formSubmitHandler = (event) => {};
 
-    const imageChangeHandler = (event) => {};
+    const imageChangeHandler = (event) => {
+        console.log(event.target.files[0]);
+        setPreview(URL.createObjectURL(event.target.files[0]));
+        setValues((prevState) => {
+            return { ...prevState, image: event.target.files[0] };
+        });
+    };
 
     const changeHandler = (event) => {
         setValues((prevState) => {
@@ -82,6 +88,8 @@ const NewHotel = () => {
         <Fragment>
             <h2>Add Hotel</h2>
             {hotelForm()}
+            <img src={preview} alt="preview_image" />
+            {JSON.stringify(values, null, 8)}
         </Fragment>
     );
 };
