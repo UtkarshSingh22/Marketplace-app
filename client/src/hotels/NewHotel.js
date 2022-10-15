@@ -1,4 +1,3 @@
-import AlgoliaPlaces from "algolia-places-react";
 import { Fragment, useState } from "react";
 
 const NewHotel = () => {
@@ -34,6 +33,10 @@ const NewHotel = () => {
         });
     };
 
+    const locationChangeHandler = (event) => {
+        
+    };
+
     const hotelForm = () => {
         return (
             <form onSubmit={formSubmitHandler}>
@@ -61,6 +64,14 @@ const NewHotel = () => {
                     onChange={changeHandler}
                     placeholder="Content"
                     value={content}
+                />
+
+                <label htmlFor="location">Location</label>
+                <input
+                    type="text"
+                    id="location"
+                    placeholder="Enter the location"
+                    onChange={locationChangeHandler}
                 />
 
                 <input
