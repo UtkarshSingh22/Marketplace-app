@@ -3,16 +3,18 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { connectPayouts } from "../actions/payments";
 import ConnectPayoutsForm from "./ConnectPayoutsForm";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { authActions } from "../store/slices/auth";
 
 const ConnectPayouts = () => {
-    const [nameInput, setNameInput] = useState("");
+    const state = useSelector((state) => state.auth.user);
+
+    const [nameInput, setNameInput] = useState(state.name);
     const [accountNum, setAccountNum] = useState("");
     const [ifsc, setIfsc] = useState("");
 
-    const { auth } = useSelector((state) => state);
-
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     const nameInputHandler = (event) => {
         setNameInput(event.target.value);
@@ -26,14 +28,23 @@ const ConnectPayouts = () => {
         setIfsc(event.target.value);
     };
 
-    const formSubmitHandler = async () => {
+    const formSubmitHandler = async (event) => {
+        event.preventDefault();
+
         try {
-            const email = auth.user.email;
+            const email = state.email;
             await connectPayouts({ email, accountNum, ifsc });
+
+            const data = JSON.parse(window.localStorage.getItem("auth"));
+            data.user.isConnectedForPayouts = true;
+
+            dispatch(authActions.connectForPayouts());
+            window.localStorage.setItem("auth", JSON.stringify(data));
+
             toast.success("You're bank account is added successfully.");
-            navigate("/dashboard");
+            navigate("/dashboard/seller");
         } catch (err) {
-            toast.error(err);
+            toast.error(err.response.data);
         }
     };
 

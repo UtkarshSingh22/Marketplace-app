@@ -18,6 +18,9 @@ const authSlice = createSlice({
         logout(state) {
             return (state = null);
         },
+        connectForPayouts(state) {
+            state.user.isConnectedForPayouts = true;
+        },
         default(state) {
             return state;
         },

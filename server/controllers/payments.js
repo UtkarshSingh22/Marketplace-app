@@ -1,7 +1,7 @@
 import User from "../models/user";
 
-exports.connectPayouts = async (req, res, next) => {
-    const { email, accountNumber, ifscCode } = req.data;
+export const connectPayouts = async (req, res, next) => {
+    const { email, accountNumber, ifscCode } = req.body;
 
     if (!accountNumber || accountNumber.length != 12) {
         return res

@@ -23,6 +23,14 @@ const userSchema = new Schema(
             required: true,
         },
         isConnectedForPayouts: false,
+        accountNumber: {
+            type: String,
+            trim: true,
+        },
+        ifscCode: {
+            type: String,
+            trim: true,
+        },
     },
     { timeseries: true }
 );

@@ -1,8 +1,8 @@
 import express from "express";
-import paymentsController from "../controllers/payments";
+import {connectPayouts} from "../controllers/payments";
 
 const router = express.Router();
 
-router.post("/connect-payouts", paymentsController.connectPayouts);
+router.post("/connect-payouts", connectPayouts);
 
 export default router;
