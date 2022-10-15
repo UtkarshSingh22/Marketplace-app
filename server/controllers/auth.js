@@ -21,7 +21,12 @@ exports.register = async (req, res, next) => {
     }
 
     //registering
-    const user = new User(req.body);
+    const user = new User({
+        ...req.body,
+        isConnectedForPayouts: false,
+        accountNumber: "",
+        ifscCode: "",
+    });
 
     try {
         await user.save();
@@ -74,6 +79,7 @@ exports.login = async (req, res, next) => {
                     _id: user._id,
                     name: user.name,
                     email: user.email,
+                    isConnectedForPayouts: user.isConnectedForPayouts,
                 },
             });
         });

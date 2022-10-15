@@ -48,7 +48,7 @@ const DashboardSeller = () => {
             <ConnectNav />
 
             <DashboardNav />
-            {auth && auth.user && auth.user.connectedForPayouts
+            {auth && auth.user && auth.user.isConnectedForPayouts
                 ? connected()
                 : notConnected()}
         </Fragment>

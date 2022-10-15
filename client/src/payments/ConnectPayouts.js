@@ -1,12 +1,16 @@
 import { Fragment, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { connectPayouts } from "../actions/payments";
 import ConnectPayoutsForm from "./ConnectPayoutsForm";
+import { useSelector } from "react-redux";
 
 const ConnectPayouts = () => {
     const [nameInput, setNameInput] = useState("");
     const [accountNum, setAccountNum] = useState("");
     const [ifsc, setIfsc] = useState("");
+
+    const { auth } = useSelector((state) => state);
 
     const navigate = useNavigate();
 
@@ -22,9 +26,14 @@ const ConnectPayouts = () => {
         setIfsc(event.target.value);
     };
 
-    const formSubmitHandler = () => {
-        toast.success("You're account is added successfully.");
-        navigate("/dashboard");
+    const formSubmitHandler = async () => {
+        try {
+            let response = await connectPayouts({ auth, accountNum, ifsc });
+            toast.success("You're account is added successfully.");
+            navigate("/dashboard");
+        } catch (err) {
+            toast.error("Something went wrong, Please try again.");
+        }
     };
 
     return (

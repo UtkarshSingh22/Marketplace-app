@@ -22,6 +22,7 @@ const userSchema = new Schema(
             max: 64,
             required: true,
         },
+        isConnectedForPayouts: false,
     },
     { timeseries: true }
 );

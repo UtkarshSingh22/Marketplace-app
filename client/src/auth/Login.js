@@ -31,8 +31,9 @@ const Login = () => {
             });
             toast.success("Logged in!");
             if (res.data) {
+                const data = res.data;
                 window.localStorage.setItem("auth", JSON.stringify(res.data));
-                dispatch(authActions.loggedInUser(res.data));
+                dispatch(authActions.loggedInUser(data));
                 navigate("/dashboard");
             }
         } catch (err) {
