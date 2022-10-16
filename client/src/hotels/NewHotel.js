@@ -1,15 +1,13 @@
 import { Fragment, useState } from "react";
 import { createHotel } from "../actions/hotel";
-
-function convertDate(inputFormat) {
-    function pad(s) {
-        return s < 10 ? "0" + s : s;
-    }
-    var d = new Date(inputFormat);
-    return [d.getFullYear(), pad(d.getMonth() + 1), pad(d.getDate())].join("-");
-}
+import { useSelector } from "react-redux";
+import { toast } from "react-toastify";
+import convertDate from "../utils/convertDate";
 
 const NewHotel = () => {
+    const { auth } = useSelector((state) => ({ ...state }));
+    const { token } = auth;
+
     const [values, setValues] = useState({
         title: "",
         content: "",
@@ -28,9 +26,30 @@ const NewHotel = () => {
 
     const formSubmitHandler = async (event) => {
         event.preventDefault();
-        await createHotel()
 
-        
+        let hotelData = new FormData();
+        hotelData.append("title", title);
+        hotelData.append("content", content);
+        hotelData.append("location", location);
+        image && hotelData.append("image", image);
+        hotelData.append("price", price);
+        hotelData.append("from", from);
+        hotelData.append("to", to);
+        hotelData.append("bed", bed);
+
+        console.log([...hotelData]);
+
+        let res = await createHotel(token, hotelData);
+        toast("New hotel is posted");
+
+        title = "";
+        content = "";
+        location = "";
+        image = "";
+        price = "";
+        from = "";
+        to = "";
+        bed = "";
     };
 
     const imageChangeHandler = (event) => {
@@ -125,6 +144,7 @@ const NewHotel = () => {
                     value={from}
                     min={new Date().toISOString().split("T")[0]}
                 />
+
                 <label>To date</label>
                 <input
                     type="date"
@@ -145,7 +165,6 @@ const NewHotel = () => {
             <h2>Add Hotel</h2>
             {hotelForm()}
             <img src={preview} alt="preview_image" />
-            {JSON.stringify(values, null, 8)}
         </Fragment>
     );
 };
