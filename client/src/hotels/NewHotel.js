@@ -17,10 +17,11 @@ const NewHotel = () => {
 
     const { title, content, location, image, price, from, to, bed } = values;
 
-    const formSubmitHandler = (event) => {};
+    const formSubmitHandler = (event) => {
+        event.preventDefault();
+    };
 
     const imageChangeHandler = (event) => {
-        console.log(event.target.files[0]);
         setPreview(URL.createObjectURL(event.target.files[0]));
         setValues((prevState) => {
             return { ...prevState, image: event.target.files[0] };
@@ -31,10 +32,6 @@ const NewHotel = () => {
         setValues((prevState) => {
             return { ...prevState, [event.target.name]: event.target.value };
         });
-    };
-
-    const locationChangeHandler = (event) => {
-        
     };
 
     const hotelForm = () => {
@@ -66,12 +63,12 @@ const NewHotel = () => {
                     value={content}
                 />
 
-                <label htmlFor="location">Location</label>
                 <input
                     type="text"
-                    id="location"
-                    placeholder="Enter the location"
-                    onChange={locationChangeHandler}
+                    name="location"
+                    onChange={changeHandler}
+                    placeholder="Address"
+                    value={location}
                 />
 
                 <input
@@ -88,6 +85,18 @@ const NewHotel = () => {
                     onChange={changeHandler}
                     placeholder="Number of beds"
                     value={bed}
+                />
+
+                <label>From date</label>
+                <input
+                    type="date"
+                    onChange={(event) => console.log(event.target.valueAsDate)}
+                    
+                />
+                <label>To date</label>
+                <input
+                    type="date"
+                    onChange={(event) => console.log(event.target.valueAsDate)}
                 />
 
                 <button type="submit">Save</button>
