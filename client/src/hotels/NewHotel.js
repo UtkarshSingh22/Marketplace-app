@@ -1,5 +1,13 @@
 import { Fragment, useState } from "react";
 
+function convertDate(inputFormat) {
+    function pad(s) {
+        return s < 10 ? "0" + s : s;
+    }
+    var d = new Date(inputFormat);
+    return [d.getFullYear(), pad(d.getMonth() + 1), pad(d.getDate())].join("-");
+}
+
 const NewHotel = () => {
     const [values, setValues] = useState({
         title: "",
@@ -29,9 +37,21 @@ const NewHotel = () => {
     };
 
     const changeHandler = (event) => {
-        setValues((prevState) => {
-            return { ...prevState, [event.target.name]: event.target.value };
-        });
+        if (event.target.type === "date") {
+            setValues((prevState) => {
+                return {
+                    ...prevState,
+                    [event.target.name]: convertDate(event.target.valueAsDate),
+                };
+            });
+        } else {
+            setValues((prevState) => {
+                return {
+                    ...prevState,
+                    [event.target.name]: event.target.value,
+                };
+            });
+        }
     };
 
     const hotelForm = () => {
@@ -90,13 +110,19 @@ const NewHotel = () => {
                 <label>From date</label>
                 <input
                     type="date"
-                    onChange={(event) => console.log(event.target.valueAsDate)}
-                    
+                    name="from"
+                    onChange={changeHandler}
+                    value={from}
+                    min={new Date().toISOString().split("T")[0]}
                 />
                 <label>To date</label>
                 <input
                     type="date"
-                    onChange={(event) => console.log(event.target.valueAsDate)}
+                    name="to"
+                    onChange={changeHandler}
+                    value={to}
+                    min={from}
+                    disabled={from.length === 0}
                 />
 
                 <button type="submit">Save</button>
