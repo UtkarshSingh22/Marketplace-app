@@ -1,4 +1,5 @@
 import { Fragment, useState } from "react";
+import { createHotel } from "../actions/hotel";
 
 function convertDate(inputFormat) {
     function pad(s) {
@@ -25,8 +26,11 @@ const NewHotel = () => {
 
     const { title, content, location, image, price, from, to, bed } = values;
 
-    const formSubmitHandler = (event) => {
+    const formSubmitHandler = async (event) => {
         event.preventDefault();
+        await createHotel()
+
+        
     };
 
     const imageChangeHandler = (event) => {
@@ -98,14 +102,6 @@ const NewHotel = () => {
                     placeholder="Price"
                     value={price}
                 />
-
-                {/* <input
-                    type="number"
-                    name="bed"
-                    onChange={changeHandler}
-                    placeholder="Number of beds"
-                    value={bed}
-                /> */}
 
                 <select
                     onChange={changeHandler}
