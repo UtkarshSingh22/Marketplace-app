@@ -99,13 +99,27 @@ const NewHotel = () => {
                     value={price}
                 />
 
-                <input
+                {/* <input
                     type="number"
                     name="bed"
                     onChange={changeHandler}
                     placeholder="Number of beds"
                     value={bed}
-                />
+                /> */}
+
+                <select
+                    onChange={changeHandler}
+                    name="bed"
+                    value={bed}
+                    required
+                >
+                    <option value="">Number of beds</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
 
                 <label>From date</label>
                 <input
