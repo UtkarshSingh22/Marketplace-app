@@ -28,7 +28,7 @@ const Hotel = ({
             <div>
                 <h3>{hotel.title}</h3>
                 <p>₹{hotel.price}/night</p>
-                <p>{`${hotel.content.substring(1, 200)}...`}</p>
+                <p>{`${hotel.content.substring(0, 200)}...`}</p>
                 <p>{hotel.location}</p>
 
                 <p>
@@ -37,7 +37,9 @@ const Hotel = ({
                         ? " day"
                         : " days"}
                 </p>
-                <p>{hotel.beds} bed</p>
+                <p>
+                    {hotel.bed} {hotel.bed <= 1 ? " bed" : " beds"}
+                </p>
                 <p>
                     Available from {new Date(hotel.from).toLocaleDateString()}
                 </p>

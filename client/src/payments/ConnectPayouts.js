@@ -9,6 +9,9 @@ import { authActions } from "../store/slices/auth";
 const ConnectPayouts = () => {
     const state = useSelector((state) => state.auth.user);
 
+    const { auth } = useSelector((state) => state);
+    const { token } = auth;
+
     const [nameInput, setNameInput] = useState(state.name);
     const [accountNum, setAccountNum] = useState("");
     const [ifsc, setIfsc] = useState("");
@@ -33,7 +36,7 @@ const ConnectPayouts = () => {
 
         try {
             const email = state.email;
-            await connectPayouts({ email, accountNum, ifsc });
+            await connectPayouts({ email, accountNum, ifsc, token });
 
             const data = JSON.parse(window.localStorage.getItem("auth"));
             data.user.isConnectedForPayouts = true;
