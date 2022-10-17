@@ -19,7 +19,7 @@ const Home = () => {
             <h1>All Hotels</h1>
             <div>
                 {hotels.map((hotel) => {
-                    <Hotel key={hotel._id} hotel={hotel} />;
+                    return <Hotel key={hotel._id} hotel={hotel} />;
                 })}
             </div>
         </Fragment>
