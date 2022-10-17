@@ -36,7 +36,14 @@ const DashboardSeller = () => {
             </div>
             <div>
                 {hotels.map((hotel) => {
-                    return <Hotel hotel={hotel} key={hotel._id} />;
+                    return (
+                        <Hotel
+                            hotel={hotel}
+                            key={hotel._id}
+                            showViewMoreButton={false}
+                            owner={true}
+                        />
+                    );
                 })}
             </div>
         </Fragment>
