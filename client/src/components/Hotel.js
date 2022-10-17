@@ -1,12 +1,14 @@
+import { Fragment } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { differenceInDates } from "../utils/differnceInDates";
 
-const Hotel = ({ hotel, onDelete }) => {
+const Hotel = ({
+    hotel,
+    deleteHotelHandler = (f) => f,
+    owner = false,
+    showViewMoreButton = true,
+}) => {
     const navigate = useNavigate();
-
-    const deleteHotelHandler = (id) => {
-        onDelete(id);
-    };
 
     return (
         <div>
@@ -41,17 +43,23 @@ const Hotel = ({ hotel, onDelete }) => {
                 </p>
             </div>
             <div>
-                <button
-                    onClick={() => {
-                        navigate(`/hotel/${hotel._id}`);
-                    }}
-                >
-                    Show more
-                </button>
-                <Link to={`/hotel/edit/${hotel._id}`}>Edit</Link>
-                <button onClick={() => deleteHotelHandler(hotel._id)}>
-                    Delete
-                </button>
+                {showViewMoreButton && (
+                    <button
+                        onClick={() => {
+                            navigate(`/hotel/${hotel._id}`);
+                        }}
+                    >
+                        Show more
+                    </button>
+                )}
+                {owner && (
+                    <Fragment>
+                        <Link to={`/hotel/edit/${hotel._id}`}>Edit</Link>
+                        <button onClick={() => deleteHotelHandler(hotel._id)}>
+                            Delete
+                        </button>
+                    </Fragment>
+                )}
             </div>
         </div>
     );

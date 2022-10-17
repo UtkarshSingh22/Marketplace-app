@@ -7,3 +7,8 @@ a {
 .active {
     background-color: pink;
 }
+
+img {
+    width: 250px;
+    height: 150px;
+}

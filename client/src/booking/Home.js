@@ -14,22 +14,12 @@ const Home = () => {
         setHotels(result.data);
     };
 
-    const deleteHotelHandler = (hotelId) => {
-        console.log(hotelId, " from home");
-    };
-
     return (
         <Fragment>
             <h1>All Hotels</h1>
             <div>
                 {hotels.map((hotel) => {
-                    return (
-                        <Hotel
-                            key={hotel._id}
-                            hotel={hotel}
-                            onDelete={deleteHotelHandler}
-                        />
-                    );
+                    return <Hotel key={hotel._id} hotel={hotel} />;
                 })}
             </div>
         </Fragment>
