@@ -1,5 +1,6 @@
 import { Fragment, useEffect, useState } from "react";
 import { allHotels } from "../actions/hotel";
+import Hotel from "../components/Hotel";
 
 const Home = () => {
     const [hotels, setHotels] = useState([]);
@@ -16,7 +17,11 @@ const Home = () => {
     return (
         <Fragment>
             <h1>All Hotels</h1>
-            <div>{JSON.stringify(hotels, null, 8)}</div>
+            <div>
+                {hotels.map((hotel) => {
+                    <Hotel key={hotel._id} hotel={hotel} />;
+                })}
+            </div>
         </Fragment>
     );
 };
