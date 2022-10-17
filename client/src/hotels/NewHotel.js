@@ -1,15 +1,13 @@
-import { Fragment, useState } from "react";
+import { useState } from "react";
 import { createHotel } from "../actions/hotel";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import convertDate from "../utils/convertDate";
-import { useNavigate } from "react-router-dom";
+import HotelCreateForm from "../forms/HotelCreateForm";
 
 const NewHotel = () => {
     const { auth } = useSelector((state) => ({ ...state }));
     const { token } = auth;
-
-    const navigate = useNavigate();
 
     const [values, setValues] = useState({
         title: "",
@@ -45,7 +43,7 @@ const NewHotel = () => {
             console.log(res);
             toast("New hotel is posted");
             setTimeout(() => {
-                navigate("/hotels/new");
+                window.location.reload();
             }, 1000);
         } catch (err) {
             toast.error(err.response.data);
@@ -77,95 +75,14 @@ const NewHotel = () => {
         }
     };
 
-    const hotelForm = () => {
-        return (
-            <form onSubmit={formSubmitHandler}>
-                <label>
-                    Image
-                    <input
-                        type="file"
-                        name="image"
-                        onChange={imageChangeHandler}
-                        accept="image/*"
-                        hidden
-                    />
-                </label>
-
-                <input
-                    type="text"
-                    name="title"
-                    onChange={changeHandler}
-                    placeholder="Title"
-                    value={title}
-                />
-
-                <textarea
-                    name="content"
-                    onChange={changeHandler}
-                    placeholder="Content"
-                    value={content}
-                />
-
-                <input
-                    type="text"
-                    name="location"
-                    onChange={changeHandler}
-                    placeholder="Address"
-                    value={location}
-                />
-
-                <input
-                    type="number"
-                    name="price"
-                    onChange={changeHandler}
-                    placeholder="Price"
-                    value={price}
-                />
-
-                <select
-                    onChange={changeHandler}
-                    name="bed"
-                    value={bed}
-                    required
-                >
-                    <option value="">Number of beds</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                </select>
-
-                <label>From date</label>
-                <input
-                    type="date"
-                    name="from"
-                    onChange={changeHandler}
-                    value={from}
-                    min={new Date().toISOString().split("T")[0]}
-                />
-
-                <label>To date</label>
-                <input
-                    type="date"
-                    name="to"
-                    onChange={changeHandler}
-                    value={to}
-                    min={from}
-                    disabled={from.length === 0}
-                />
-
-                <button type="submit">Save</button>
-            </form>
-        );
-    };
-
     return (
-        <Fragment>
-            <h2>Add Hotel</h2>
-            {hotelForm()}
-            <img src={preview} alt="preview_image" />
-        </Fragment>
+        <HotelCreateForm
+            changeHandler={changeHandler}
+            imageChangeHandler={imageChangeHandler}
+            formSubmitHandler={formSubmitHandler}
+            values={values}
+            preview={preview}
+        />
     );
 };
 

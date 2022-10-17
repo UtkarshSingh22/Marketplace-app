@@ -2,7 +2,7 @@ import { Fragment, useState } from "react";
 import { register } from "../actions/auth";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import RegisterForm from "../components/RegisterForm";
+import RegisterForm from "../forms/RegisterForm";
 
 const Register = () => {
     const navigate = useNavigate();

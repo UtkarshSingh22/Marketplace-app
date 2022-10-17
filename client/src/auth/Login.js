@@ -4,7 +4,7 @@ import { login } from "../actions/auth";
 import { useDispatch } from "react-redux";
 import { authActions } from "../store/slices/auth";
 import { useNavigate } from "react-router-dom";
-import LoginForm from "../components/LoginForm";
+import LoginForm from "../forms/LoginForm";
 
 const Login = () => {
     const dispatch = useDispatch();
