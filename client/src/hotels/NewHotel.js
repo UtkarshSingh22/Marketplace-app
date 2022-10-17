@@ -3,10 +3,13 @@ import { createHotel } from "../actions/hotel";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import convertDate from "../utils/convertDate";
+import { useNavigate } from "react-router-dom";
 
 const NewHotel = () => {
     const { auth } = useSelector((state) => ({ ...state }));
     const { token } = auth;
+
+    const navigate = useNavigate();
 
     const [values, setValues] = useState({
         title: "",
@@ -37,19 +40,16 @@ const NewHotel = () => {
         hotelData.append("to", to);
         hotelData.append("bed", bed);
 
-        console.log([...hotelData]);
-
-        let res = await createHotel(token, hotelData);
-        toast("New hotel is posted");
-
-        title = "";
-        content = "";
-        location = "";
-        image = "";
-        price = "";
-        from = "";
-        to = "";
-        bed = "";
+        try {
+            let res = await createHotel(token, hotelData);
+            console.log(res)
+            toast("New hotel is posted");
+            setTimeout(() => {
+                navigate("/hotels/new");
+            }, 1000);
+        } catch (err) {
+            toast("...");
+        }
     };
 
     const imageChangeHandler = (event) => {
