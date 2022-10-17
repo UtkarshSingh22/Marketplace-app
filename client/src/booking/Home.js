@@ -1,12 +1,23 @@
-import { useSelector } from "react-redux";
+import { Fragment, useEffect, useState } from "react";
+import { allHotels } from "../actions/hotel";
 
 const Home = () => {
-    const { auth } = useSelector((state) => state);
+    const [hotels, setHotels] = useState([]);
+
+    useEffect(() => {
+        loadAllHotels();
+    }, []);
+
+    const loadAllHotels = async () => {
+        let result = await allHotels();
+        setHotels(result.data);
+    };
+
     return (
-        <div>
-            <div className="homepage">Home Page</div>
-            <p>{JSON.stringify(auth)}</p>
-        </div>
+        <Fragment>
+            <h1>All Hotels</h1>
+            <div>{JSON.stringify(hotels, null, 8)}</div>
+        </Fragment>
     );
 };
 

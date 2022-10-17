@@ -58,7 +58,6 @@ const HotelCreateForm = ({
                     onChange={changeHandler}
                     name="bed"
                     value={bed}
-                    required
                 >
                     <option value="">Number of beds</option>
                     <option value="1">1</option>

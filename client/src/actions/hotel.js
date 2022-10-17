@@ -7,3 +7,7 @@ export const createHotel = async (token, data) => {
         },
     });
 };
+
+export const allHotels = async () => {
+    return await axios.get(`${process.env.REACT_APP_API}/hotels`);
+};

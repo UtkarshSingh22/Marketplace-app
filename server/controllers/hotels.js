@@ -23,3 +23,13 @@ export const create = async (req, res) => {
         res.status(400).send("Error in saving, Try again.");
     }
 };
+
+export const hotels = async (req, res) => {
+    let all = await Hotel.find({})
+        .limit(24)
+        .select("-imageData")
+        .populate("postedBy", "_id name")
+        .exec();
+
+    res.json(all);
+};
