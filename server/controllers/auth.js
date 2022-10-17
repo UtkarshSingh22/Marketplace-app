@@ -2,33 +2,34 @@ import User from "../models/user";
 import jwt from "jsonwebtoken";
 
 exports.register = async (req, res, next) => {
-    const { name, email, password } = req.body;
-
-    if (!name) {
-        return res.status(400).send("Name is required");
-    }
-    if (!email) {
-        return res.status(400).send("Email is required");
-    }
-    if (!password || password.length < 6 || password.length > 64) {
-        return res
-            .status(400)
-            .send("Password is required and should be of 6 - 64 characters");
-    }
-    let userExist = await User.findOne({ email }).exec();
-    if (userExist) {
-        return res.status(400).send("Email is already taken");
-    }
-
-    //registering
-    const user = new User({
-        ...req.body,
-        isConnectedForPayouts: false,
-        accountNumber: "",
-        ifscCode: "",
-    });
-
     try {
+        const { name, email, password } = req.body;
+
+        if (!name) {
+            return res.status(400).send("Name is required");
+        }
+        if (!email) {
+            return res.status(400).send("Email is required");
+        }
+        if (!password || password.length < 6 || password.length > 64) {
+            return res
+                .status(400)
+                .send(
+                    "Password is required and should be of 6 - 64 characters"
+                );
+        }
+        let userExist = await User.findOne({ email }).exec();
+        if (userExist) {
+            return res.status(400).send("Email is already taken");
+        }
+
+        //registering
+        const user = new User({
+            ...req.body,
+            isConnectedForPayouts: false,
+            accountNumber: "",
+            ifscCode: "",
+        });
         await user.save();
         console.log("User registered!");
         return res.json({ ok: true });
@@ -39,18 +40,19 @@ exports.register = async (req, res, next) => {
 };
 
 exports.login = async (req, res, next) => {
-    const { email, password } = req.body;
-
-    if (!email) {
-        return res.status(400).send("Email is required");
-    }
-    if (!password || password.length < 6 || password.length > 64) {
-        return res
-            .status(400)
-            .send("Password is required and should be of 6 - 64 characters");
-    }
-
     try {
+        const { email, password } = req.body;
+
+        if (!email) {
+            return res.status(400).send("Email is required");
+        }
+        if (!password || password.length < 6 || password.length > 64) {
+            return res
+                .status(400)
+                .send(
+                    "Password is required and should be of 6 - 64 characters"
+                );
+        }
         const user = await User.findOne({ email: email }).exec();
 
         if (!user) {
