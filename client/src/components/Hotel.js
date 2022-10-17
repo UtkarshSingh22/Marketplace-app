@@ -1,8 +1,12 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { differenceInDates } from "../utils/differnceInDates";
 
-const Hotel = ({ hotel }) => {
+const Hotel = ({ hotel, onDelete }) => {
     const navigate = useNavigate();
+
+    const deleteHotelHandler = (id) => {
+        onDelete(id);
+    };
 
     return (
         <div>
@@ -29,13 +33,19 @@ const Hotel = ({ hotel }) => {
                     Available from {new Date(hotel.from).toLocaleDateString()}
                 </p>
             </div>
-            <button
-                onClick={() => {
-                    navigate(`/hotel/${hotel._id}`);
-                }}
-            >
-                Show more
-            </button>
+            <div>
+                <button
+                    onClick={() => {
+                        navigate(`/hotel/${hotel._id}`);
+                    }}
+                >
+                    Show more
+                </button>
+                <Link to={`/hotel/edit/${hotel._id}`}>Edit</Link>
+                <button onClick={() => deleteHotelHandler(hotel._id)}>
+                    Delete
+                </button>
+            </div>
         </div>
     );
 };
