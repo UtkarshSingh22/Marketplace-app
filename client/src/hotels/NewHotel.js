@@ -39,7 +39,7 @@ const NewHotel = () => {
         hotelData.append("bed", bed);
 
         try {
-            let res = await createHotel(token, hotelData);
+            let res = await createHotel(token, hotelData, auth.user._id);
             console.log(res);
             toast("New hotel is posted");
             setTimeout(() => {

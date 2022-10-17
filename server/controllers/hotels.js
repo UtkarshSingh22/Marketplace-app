@@ -7,6 +7,7 @@ export const create = async (req, res) => {
         let files = req.files;
 
         let hotel = new Hotel(fields);
+        hotel.postedBy = req.headers.userid;
 
         if (files.image) {
             hotel.imageData = fs.readFileSync(files.image.path);
@@ -20,7 +21,7 @@ export const create = async (req, res) => {
             res.json(result);
         });
     } catch (err) {
-        res.status(400).send("Error in saving, Try again.");
+        res.status(400).send("Something went wrong, Try again.");
     }
 };
 
@@ -44,7 +45,7 @@ export const image = async (req, res) => {
 };
 
 export const sellerHotels = async (req, res) => {
-    let all = await Hotel.find({ postedBy: req.user._id })
+    let all = await Hotel.find({ postedBy: req.headers.userid })
         .select("-imageData")
         .populate("postedBy", "_id name")
         .exec();

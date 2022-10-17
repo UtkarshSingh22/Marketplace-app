@@ -1,13 +1,26 @@
-import { Fragment } from "react";
+import { Fragment, useEffect, useState } from "react";
 import ConnectNav from "../components/ConnectNav";
 import DashboardNav from "../components/DashboardNav";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { sellerHotels } from "../actions/hotel";
+import Hotel from "../components/Hotel";
 
 const DashboardSeller = () => {
     const { auth } = useSelector((state) => ({ ...state }));
 
+    const [hotels, setHotels] = useState([]);
+
     const navigate = useNavigate();
+
+    useEffect(() => {
+        loadSellerHotels();
+    }, []);
+
+    const loadSellerHotels = async () => {
+        let { data } = await sellerHotels(auth.token, auth.user._id);
+        setHotels(data);
+    };
 
     const payoutClickHandler = async () => {
         navigate("/connect-payouts");
@@ -20,6 +33,11 @@ const DashboardSeller = () => {
             </div>
             <div>
                 <Link to="/hotels/new">+ Add New</Link>
+            </div>
+            <div>
+                {hotels.map((hotel) => {
+                    return <Hotel hotel={hotel} key={hotel._id} />;
+                })}
             </div>
         </Fragment>
     );

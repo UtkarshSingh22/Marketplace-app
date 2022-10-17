@@ -1,7 +1,6 @@
 import mongoose from "mongoose";
 
 const { Schema } = mongoose;
-const { ObjectId } = mongoose.Schema;
 
 const hotelSchema = new Schema(
     {
@@ -23,7 +22,7 @@ const hotelSchema = new Schema(
             trim: true,
         },
         postedBy: {
-            type: ObjectId,
+            type: Schema.Types.ObjectId,
             ref: "User",
         },
         imageData: {
