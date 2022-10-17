@@ -9,20 +9,17 @@ export const create = async (req, res) => {
         let hotel = new Hotel(fields);
 
         if (files.image) {
-            hotel.image.data = fs.readFileSync(files.image.path);
-            hotel.image.contentType = files.image.type;
+            hotel.imageData = fs.readFileSync(files.image.path);
+            hotel.imageContentType = files.image.type;
         }
 
-        hotel.save((err, res) => {
+        hotel.save((err, result) => {
             if (err) {
-                console.log("saving hotel err", err);
-                res.status(400).send("Error in saving");
+                res.status(400).send("Error in saving, Try again.");
             }
-            res.json(res);
+            res.json(result);
         });
     } catch (err) {
-        res.status(400).json({
-            err: err.message,
-        });
+        res.status(400).send("Error in saving, Try again.");
     }
 };

@@ -26,9 +26,11 @@ const hotelSchema = new Schema(
             type: ObjectId,
             ref: "User",
         },
-        image: {
+        imageData: {
             type: Buffer,
-            contentType: String,
+        },
+        imageContentType: {
+            type: String,
         },
         from: {
             type: Date,

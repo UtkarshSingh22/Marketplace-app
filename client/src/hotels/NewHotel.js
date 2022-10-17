@@ -42,13 +42,13 @@ const NewHotel = () => {
 
         try {
             let res = await createHotel(token, hotelData);
-            console.log(res)
+            console.log(res);
             toast("New hotel is posted");
             setTimeout(() => {
                 navigate("/hotels/new");
             }, 1000);
         } catch (err) {
-            toast("...");
+            toast.error(err.response.data);
         }
     };
 
