@@ -11,10 +11,17 @@ const Hotel = ({ hotel, onDelete }) => {
     return (
         <div>
             <div>
-                <img
-                    src="https://via.placeholder.com/300x300.png?text=MERN+Booking"
-                    alt="hotel image"
-                />
+                {hotel.imageContentType ? (
+                    <img
+                        src={`${process.env.REACT_APP_API}/hotel/image/${hotel._id}`}
+                        alt="hotel image"
+                    />
+                ) : (
+                    <img
+                        src="https://via.placeholder.com/300x300.png?text=MERN+Booking"
+                        alt="hotel image"
+                    />
+                )}
             </div>
             <div>
                 <h3>{hotel.title}</h3>
