@@ -45,7 +45,13 @@ const ConnectPayouts = () => {
             window.localStorage.setItem("auth", JSON.stringify(data));
 
             toast.success("You're bank account is added successfully.");
-            navigate("/dashboard/seller");
+
+            if (window.localStorage.getItem("from") === "booking") {
+                window.localStorage.removeItem("from");
+                navigate(-1);
+            } else {
+                navigate("/dashboard/seller");
+            }
         } catch (err) {
             toast.error(err.response.data);
         }
