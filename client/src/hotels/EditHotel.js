@@ -36,10 +36,12 @@ const EditHotel = () => {
     const loadSellerHotel = async () => {
         let res = await read(params.hotelId);
         setValues((prevState) => {
+            const fromDate = res.data.from;
+            const toDate = res.data.to;
             return {
                 ...res.data,
-                from: from.split("T")[0],
-                to: to.split("T")[0],
+                from: fromDate.split("T")[0],
+                to: toDate.split("T")[0],
             };
         });
         setPreview(

@@ -1,4 +1,5 @@
 import { Fragment } from "react";
+import { convertDateToNormalFormat } from "../utils/convertDate";
 
 const HotelCreateForm = ({
     changeHandler,
@@ -69,7 +70,7 @@ const HotelCreateForm = ({
                     type="date"
                     name="from"
                     onChange={changeHandler}
-                    value={from.split("T")[0]}
+                    value={from}
                     min={new Date().toISOString().split("T")[0]}
                 />
 
