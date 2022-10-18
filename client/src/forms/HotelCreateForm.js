@@ -54,11 +54,7 @@ const HotelCreateForm = ({
                     value={price}
                 />
 
-                <select
-                    onChange={changeHandler}
-                    name="bed"
-                    value={bed}
-                >
+                <select onChange={changeHandler} name="bed" value={bed}>
                     <option value="">Number of beds</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -91,13 +87,7 @@ const HotelCreateForm = ({
         );
     };
 
-    return (
-        <Fragment>
-            <h2>Add Hotel</h2>
-            <img src={preview} alt="preview_image" />
-            {hotelForm()}
-        </Fragment>
-    );
+    return <Fragment>{hotelForm()}</Fragment>;
 };
 
 export default HotelCreateForm;

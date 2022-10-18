@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { useParams } from "react-router-dom";
 import convertDate from "../utils/convertDate";
+import HotelCreateForm from "../forms/HotelCreateForm";
 
 const EditHotel = () => {
     const params = useParams();
@@ -35,7 +36,7 @@ const EditHotel = () => {
     const loadSellerHotel = async () => {
         let res = await read(params.hotelId);
         setValues((prevState) => {
-            return { ...prevState, ...res.data };
+            return { ...res.data };
         });
         setPreview(
             `${process.env.REACT_APP_API}/hotel/image/${params.hotelId}`
@@ -75,6 +76,13 @@ const EditHotel = () => {
         <Fragment>
             <h2>Edit Hotel</h2>
             <img src={preview} alt="preview_image" />
+            <HotelCreateForm
+                changeHandler={changeHandler}
+                imageChangeHandler={imageChangeHandler}
+                formSubmitHandler={formSubmitHandler}
+                values={values}
+                preview={preview}
+            />
         </Fragment>
     );
 };

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { Fragment, useState } from "react";
 import { createHotel } from "../actions/hotel";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
@@ -76,13 +76,17 @@ const NewHotel = () => {
     };
 
     return (
-        <HotelCreateForm
-            changeHandler={changeHandler}
-            imageChangeHandler={imageChangeHandler}
-            formSubmitHandler={formSubmitHandler}
-            values={values}
-            preview={preview}
-        />
+        <Fragment>
+            <h2>Add Hotel</h2>
+            <img src={preview} alt="preview_image" />
+            <HotelCreateForm
+                changeHandler={changeHandler}
+                imageChangeHandler={imageChangeHandler}
+                formSubmitHandler={formSubmitHandler}
+                values={values}
+                preview={preview}
+            />
+        </Fragment>
     );
 };
 
