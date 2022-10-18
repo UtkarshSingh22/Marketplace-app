@@ -12,6 +12,7 @@ import NewHotel from "./hotels/NewHotel";
 import ConnectPayouts from "./payments/ConnectPayouts";
 import EditHotel from "./hotels/EditHotel";
 import ViewHotel from "./hotels/ViewHotel";
+import PaymentSuccess from "./payments/PaymentSuccess";
 
 function App() {
     return (
@@ -63,6 +64,14 @@ function App() {
                     }
                 />
                 <Route path="/hotel/:hotelId" element={<ViewHotel />} />
+                <Route
+                    path="/hotel/payment-success"
+                    element={
+                        <PrivateRoute redirectTo={"/login"}>
+                            <PaymentSuccess />
+                        </PrivateRoute>
+                    }
+                />
             </Routes>
         </div>
     );

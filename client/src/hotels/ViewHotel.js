@@ -36,7 +36,7 @@ const ViewHotel = () => {
 
     const message = `Are you sure to book ${hotel.bed} or less beds in ${hotel.title} for 1-${diffDays}?`;
 
-    const clickHandler = (event) => {
+    const clickHandler = async () => {
         if (!auth) {
             navigate("/login");
         } else {
@@ -45,9 +45,12 @@ const ViewHotel = () => {
                 navigate("/connect-payouts");
             } else {
                 if (window.confirm(message)) {
-                    
+
+
+                    window.localStorage.setItem("payment", "true");
+                    navigate("/hotel/payment-success");
                 } else {
-                    toast('Transaction cancelled.')
+                    toast("Transaction cancelled.");
                 }
             }
         }
