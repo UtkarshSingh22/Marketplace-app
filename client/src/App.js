@@ -62,14 +62,7 @@ function App() {
                         </PrivateRoute>
                     }
                 />
-                <Route
-                    path="/hotel/:hotelId"
-                    element={
-                        <PrivateRoute redirectTo={"/login"}>
-                            <ViewHotel />
-                        </PrivateRoute>
-                    }
-                />
+                <Route path="/hotel/:hotelId" element={<ViewHotel />} />
             </Routes>
         </div>
     );
