@@ -1,9 +1,11 @@
-import { Fragment } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { differenceInDates } from "../utils/differnceInDates";
+import { convertDateToNormalFormat } from "../utils/convertDate";
 
 const Hotel = ({ hotel, owner = false, showViewMoreButton = true }) => {
     const navigate = useNavigate();
+
+    let fromDate = convertDateToNormalFormat(hotel.from);
 
     return (
         <div>
@@ -11,12 +13,12 @@ const Hotel = ({ hotel, owner = false, showViewMoreButton = true }) => {
                 {hotel.imageContentType ? (
                     <img
                         src={`${process.env.REACT_APP_API}/hotel/image/${hotel._id}`}
-                        alt="hotel image"
+                        alt="hotel pictures"
                     />
                 ) : (
                     <img
                         src="https://via.placeholder.com/300x300.png?text=MERN+Booking"
-                        alt="hotel image"
+                        alt="hotel picture"
                     />
                 )}
             </div>
@@ -35,9 +37,7 @@ const Hotel = ({ hotel, owner = false, showViewMoreButton = true }) => {
                 <p>
                     {hotel.bed} {hotel.bed <= 1 ? " bed" : " beds"}
                 </p>
-                <p>
-                    Available from {new Date(hotel.from).toLocaleDateString()}
-                </p>
+                <p>Available from {fromDate}</p>
             </div>
             <div>
                 {showViewMoreButton && (

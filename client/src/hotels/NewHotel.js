@@ -2,7 +2,7 @@ import { Fragment, useState } from "react";
 import { createHotel } from "../actions/hotel";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
-import convertDate from "../utils/convertDate";
+import { convertDate } from "../utils/convertDate";
 import HotelCreateForm from "../forms/HotelCreateForm";
 
 const NewHotel = () => {
@@ -39,8 +39,8 @@ const NewHotel = () => {
         hotelData.append("bed", bed);
 
         try {
-            let res = await createHotel(token, hotelData, auth.user._id);
-            console.log(res);
+            await createHotel(token, hotelData, auth.user._id);
+
             toast("New hotel is posted");
             setTimeout(() => {
                 window.location.reload();

@@ -6,8 +6,9 @@ const HotelCreateForm = ({
     formSubmitHandler,
     values,
     preview,
+    edit,
 }) => {
-    const { title, content, location, image, price, from, to, bed } = values;
+    const { title, content, location, price, from, to, bed } = values;
 
     const hotelForm = () => {
         return (
@@ -68,7 +69,7 @@ const HotelCreateForm = ({
                     type="date"
                     name="from"
                     onChange={changeHandler}
-                    value={from}
+                    value={from.split("T")[0]}
                     min={new Date().toISOString().split("T")[0]}
                 />
 
@@ -79,7 +80,7 @@ const HotelCreateForm = ({
                     onChange={changeHandler}
                     value={to}
                     min={from}
-                    disabled={from.length === 0}
+                    disabled={from.length === 0 && !edit}
                 />
 
                 <button type="submit">Save</button>
