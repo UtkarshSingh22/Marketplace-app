@@ -55,6 +55,7 @@ export const sellerHotels = async (req, res) => {
 
 export const read = async (req, res) => {
     let hotel = await Hotel.findById(req.params.hotelId)
+        .populate("postedBy", "_id name")
         .select("-imageData")
         .exec();
 
