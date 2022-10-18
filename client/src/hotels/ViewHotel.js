@@ -1,4 +1,5 @@
 import { read } from "../actions/hotel";
+import { paymentSuccess } from "../actions/payments";
 import { useNavigate, useParams } from "react-router-dom";
 import { Fragment, useState, useEffect } from "react";
 import { differenceInDates } from "../utils/differnceInDates";
@@ -34,25 +35,32 @@ const ViewHotel = () => {
     let date = from.toLocaleDateString().split("/");
     let fromDate = `${date[1]}-${date[0]}-${date[2]}`;
 
-    const message = `Are you sure to book ${hotel.bed} or less beds in ${hotel.title} for 1-${diffDays}?`;
+    const message = `Are you sure to book ${hotel.bed} or less beds in ${hotel.title} for 0-${diffDays}?`;
 
     const clickHandler = async () => {
-        if (!auth) {
-            navigate("/login");
-        } else {
-            if (!auth.user.isConnectedForPayouts) {
-                window.localStorage.setItem("from", "booking");
-                navigate("/connect-payouts");
+        try {
+            if (!auth) {
+                navigate("/login");
             } else {
-                if (window.confirm(message)) {
-
-
-                    window.localStorage.setItem("payment", "true");
-                    navigate("/hotel/payment-success");
+                if (!auth.user.isConnectedForPayouts) {
+                    window.localStorage.setItem("from", "booking");
+                    navigate("/connect-payouts");
                 } else {
-                    toast("Transaction cancelled.");
+                    if (window.confirm(message)) {
+                        await paymentSuccess(
+                            auth.token,
+                            params.hotelId,
+                            auth.user._id
+                        );
+
+                        navigate("/hotel/payment-success");
+                    } else {
+                        toast("Transaction cancelled.");
+                    }
                 }
             }
+        } catch (error) {
+            toast.error("Payment failed, Try again later.");
         }
     };
 

@@ -15,3 +15,18 @@ export const connectPayouts = async ({ email, accountNum, ifsc, token }) => {
         }
     );
 };
+
+export const paymentSuccess = async ({ token, hotelId, userId }) => {
+    return await axios.post(
+        `${process.env.REACT_APP_API}/payment-success`,
+        {
+            hotelId,
+            userId,
+        },
+        {
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+        }
+    );
+};
