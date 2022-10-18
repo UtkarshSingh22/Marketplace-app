@@ -63,7 +63,7 @@ const EditHotel = () => {
         hotelData.append("bed", bed);
 
         try {
-            // await createHotel(token, hotelData, auth.user._id);
+            await updateHotel(token, hotelData, auth.user._id);
             toast("New changes are saved.");
         } catch (err) {
             toast.error(err.response.data);
