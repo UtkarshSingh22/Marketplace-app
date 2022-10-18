@@ -52,3 +52,11 @@ export const sellerHotels = async (req, res) => {
 
     res.send(all);
 };
+
+export const read = async (req, res) => {
+    let hotel = await Hotel.findById(req.params.hotelId)
+        .select("-imageData")
+        .exec();
+
+    res.json(hotel);
+};
