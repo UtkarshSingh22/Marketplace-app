@@ -92,7 +92,7 @@ export const updateHotel = async (req, res) => {
 
 export const userHotelBookings = async (req, res) => {
     try {
-        const all = await Order.find({ userId: req.body.userId })
+        const all = await Order.find({ userId: req.headers.userid })
             .populate("hotelId", "-imageData")
             .populate("userId", "_id name")
             .exec();
