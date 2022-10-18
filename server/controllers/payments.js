@@ -29,3 +29,7 @@ export const connectPayouts = async (req, res, next) => {
         return res.status(400).send("Something went wrong, Please try again.");
     }
 };
+
+export const paymentSuccess = async (req, res) => {
+    
+}
