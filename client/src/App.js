@@ -10,6 +10,7 @@ import PrivateRoute from "./components/PrivateRoute";
 import DashboardSeller from "./user/DashboardSeller";
 import NewHotel from "./hotels/NewHotel";
 import ConnectPayouts from "./payments/ConnectPayouts";
+import EditHotel from "./hotels/EditHotel";
 
 function App() {
     return (
@@ -49,6 +50,14 @@ function App() {
                     element={
                         <PrivateRoute redirectTo={"/login"}>
                             <NewHotel />
+                        </PrivateRoute>
+                    }
+                />
+                <Route
+                    path="/hotel/edit/:hotelId"
+                    element={
+                        <PrivateRoute redirectTo={"/login"}>
+                            <EditHotel />
                         </PrivateRoute>
                     }
                 />

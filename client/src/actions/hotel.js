@@ -21,3 +21,7 @@ export const sellerHotels = async (token, userId) => {
         },
     });
 };
+
+export const read = async (hotelId) => {
+    return await axios.get(`${process.env.REACT_APP_API}/hotel/${hotelId}`);
+};
