@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { sellerHotels } from "../actions/hotel";
 import Hotel from "../components/Hotel";
+import { toast } from "react-toastify";
 
 const DashboardSeller = () => {
     const { auth } = useSelector((state) => ({ ...state }));
@@ -14,6 +15,19 @@ const DashboardSeller = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
+
+        const toastNoti = window.localStorage.getItem("toast");
+        const reload = window.localStorage.getItem("reload");
+
+        if (reload) {
+            window.localStorage.removeItem("reload");
+            window.location.reload();
+        }
+        if (toastNoti) {
+            toast(toastNoti);
+            window.localStorage.removeItem("toast");
+        }
+
         loadSellerHotels();
     }, []);
 

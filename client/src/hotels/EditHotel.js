@@ -1,17 +1,24 @@
 import { Fragment, useEffect, useState } from "react";
-import { read } from "../actions/hotel";
+import { read, updateHotel } from "../actions/hotel";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { convertDate } from "../utils/convertDate";
 import HotelCreateForm from "../forms/HotelCreateForm";
 
 const EditHotel = () => {
+    const params = useParams();
+    const navigate = useNavigate();
+
     useEffect(() => {
         loadSellerHotel();
+        const toastNoti = window.localStorage.getItem("toast");
+        if (toastNoti) {
+            navigate("/dashboard/seller");
+            toast(toastNoti);
+            window.localStorage.removeItem("toast");
+        }
     }, []);
-
-    const params = useParams();
 
     const { auth } = useSelector((state) => ({ ...state }));
     const { token } = auth;
@@ -63,8 +70,17 @@ const EditHotel = () => {
         hotelData.append("bed", bed);
 
         try {
-            await updateHotel(token, hotelData, auth.user._id);
-            toast("New changes are saved.");
+            await updateHotel(token, hotelData, params.hotelId);
+
+            window.localStorage.setItem(
+                "toast",
+                `New changes are saved. ${title} is updated.`
+            );
+            window.localStorage.setItem("reload", "true");
+
+            navigate('/dashboard/seller')
+
+            window.location.reload();
         } catch (err) {
             toast.error(err.response.data);
         }

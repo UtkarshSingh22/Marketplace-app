@@ -1,13 +1,25 @@
-import { Fragment, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { createHotel } from "../actions/hotel";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { convertDate } from "../utils/convertDate";
 import HotelCreateForm from "../forms/HotelCreateForm";
+import { useNavigate } from "react-router-dom";
 
 const NewHotel = () => {
     const { auth } = useSelector((state) => ({ ...state }));
     const { token } = auth;
+
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        const toastNoti = window.localStorage.getItem("toast");
+        if (toastNoti) {
+            navigate("/dashboard/seller");
+            toast(toastNoti);
+            window.localStorage.removeItem("toast");
+        }
+    }, []);
 
     const [values, setValues] = useState({
         title: "",
@@ -41,10 +53,9 @@ const NewHotel = () => {
         try {
             await createHotel(token, hotelData, auth.user._id);
 
-            toast("New hotel is posted");
-            setTimeout(() => {
-                window.location.reload();
-            }, 1000);
+            window.localStorage.setItem("toast", "New hotel is posted");
+
+            window.location.reload();
         } catch (err) {
             toast.error(err.response.data);
         }

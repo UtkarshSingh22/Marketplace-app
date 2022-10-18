@@ -60,3 +60,30 @@ export const read = async (req, res) => {
 
     res.json(hotel);
 };
+
+export const updateHotel = async (req, res) => {
+    try {
+        let fields = req.fields;
+        let files = req.files;
+
+        let data = { ...fields };
+
+        if (files.image) {
+            let imageData = fs.readFileSync(files.image.path);
+            let imageContentType = files.image.type;
+
+            data.imageData = imageData;
+            data.imageContentType = imageContentType;
+        }
+
+        let updated = Hotel.findByIdAndUpdate(req.params.hotelId, data, {
+            new: true,
+        })
+            .select("-imageData")
+            .exec();
+
+        res.json(updated);
+    } catch (err) {
+        res.status(400).send("Something went wrong, Try again.");
+    }
+};

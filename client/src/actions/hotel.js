@@ -26,11 +26,14 @@ export const read = async (hotelId) => {
     return await axios.get(`${process.env.REACT_APP_API}/hotel/${hotelId}`);
 };
 
-export const updateHotel = async (token, data, userId) => {
-    await axios.put(`${process.env.REACT_APP_API}/update-hotel`, data, {
-        headers: {
-            Authorization: `Bearer ${token}`,
-            userId: userId,
-        },
-    });
+export const updateHotel = async (token, data, hotelId) => {
+    await axios.put(
+        `${process.env.REACT_APP_API}/update-hotel/${hotelId}`,
+        data,
+        {
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+        }
+    );
 };
