@@ -15,7 +15,6 @@ const DashboardSeller = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-
         const toastNoti = window.localStorage.getItem("toast");
         const reload = window.localStorage.getItem("reload");
 

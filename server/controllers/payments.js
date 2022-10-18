@@ -1,3 +1,4 @@
+import Order from "../models/order";
 import User from "../models/user";
 
 export const connectPayouts = async (req, res, next) => {
@@ -31,5 +32,20 @@ export const connectPayouts = async (req, res, next) => {
 };
 
 export const paymentSuccess = async (req, res) => {
-    
-}
+    try {
+        const { hotelId, userId } = req.body;
+
+        const order = new Order({
+            hotelId: hotelId,
+            userId: userId,
+        });
+
+        await order.save();
+
+        res.json({
+            ok: true,
+        });
+    } catch (error) {
+        res.status(400).send("Payment failed, please try again.");
+    }
+};

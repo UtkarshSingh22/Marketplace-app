@@ -1,5 +1,6 @@
 import Hotel from "../models/hotel";
 import fs from "fs";
+import Order from "../models/order";
 
 export const create = async (req, res) => {
     try {
@@ -86,5 +87,20 @@ export const updateHotel = async (req, res) => {
         res.json(updated);
     } catch (err) {
         res.status(400).send("Something went wrong, Try again.");
+    }
+};
+
+export const userHotelBookings = async (req, res) => {
+    try {
+        const all = await Order.find({ userId: req.body.userId })
+            .populate("hotelId", "-imageData")
+            .populate("userId", "_id name")
+            .exec();
+
+        res.json(all);
+    } catch (err) {
+        res.status(400).send(
+            "Unable to fetch your bookings, please try again."
+        );
     }
 };

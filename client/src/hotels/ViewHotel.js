@@ -17,9 +17,7 @@ const ViewHotel = () => {
         loadSellerHotel();
     }, []);
 
-    const { auth } = useSelector((state) => {
-        return state;
-    });
+    const { auth } = useSelector((state) => ({ ...state }));
 
     const loadSellerHotel = async () => {
         let res = await read(params.hotelId);
@@ -35,7 +33,7 @@ const ViewHotel = () => {
     let date = from.toLocaleDateString().split("/");
     let fromDate = `${date[1]}-${date[0]}-${date[2]}`;
 
-    const message = `Are you sure to book ${hotel.bed} or less beds in ${hotel.title} for 0-${diffDays}?`;
+    const message = `Are you sure to book rooms in ${hotel.title}?`;
 
     const clickHandler = async () => {
         try {
@@ -60,7 +58,7 @@ const ViewHotel = () => {
                 }
             }
         } catch (error) {
-            toast.error("Payment failed, Try again later.");
+            toast.error("Transaction failed, Please try again.");
         }
     };
 

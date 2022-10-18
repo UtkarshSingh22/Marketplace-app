@@ -5,6 +5,6 @@ import { requireSignIn } from "../middlewares";
 const router = express.Router();
 
 router.post("/connect-payouts", requireSignIn, connectPayouts);
-router.post("/payment-succes", requireSignIn, paymentSuccess);
+router.post("/payment-success", requireSignIn, paymentSuccess);
 
 export default router;

@@ -6,6 +6,7 @@ import {
     sellerHotels,
     read,
     updateHotel,
+    userHotelBookings,
 } from "../controllers/hotels";
 import formidable from "express-formidable";
 import { requireSignIn } from "../middlewares";
@@ -18,5 +19,6 @@ router.get("/hotel/image/:hotelId", image);
 router.get("/seller-hotels", requireSignIn, sellerHotels);
 router.get("/hotel/:hotelId", read);
 router.put("/update-hotel/:hotelId", requireSignIn, formidable(), updateHotel);
+router.get("/user-hotel-bookings", requireSignIn, userHotelBookings);
 
 export default router;

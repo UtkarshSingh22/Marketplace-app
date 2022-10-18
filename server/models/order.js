@@ -4,11 +4,11 @@ const { Schema } = mongoose;
 
 const orderSchema = new Schema(
     {
-        hotel: {
+        hotelId: {
             type: Schema.Types.ObjectId,
             ref: "Hotel",
         },
-        user: {
+        userId: {
             type: Schema.Types.ObjectId,
             ref: "User",
         },
