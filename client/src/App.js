@@ -13,6 +13,7 @@ import ConnectPayouts from "./payments/ConnectPayouts";
 import EditHotel from "./hotels/EditHotel";
 import ViewHotel from "./hotels/ViewHotel";
 import PaymentSuccess from "./payments/PaymentSuccess";
+import SearchResults from "./hotels/SearchResults";
 
 function App() {
     return (
@@ -72,6 +73,7 @@ function App() {
                         </PrivateRoute>
                     }
                 />
+                <Route path="/search-result" element={<SearchResults />} />
             </Routes>
         </div>
     );
