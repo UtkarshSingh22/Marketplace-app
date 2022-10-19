@@ -55,6 +55,8 @@ const Search = () => {
                 <option value="4">4</option>
                 <option value="5">5</option>
             </select>
+
+            <button onClick={submitHandler}>Search</button>
         </div>
     );
 };
