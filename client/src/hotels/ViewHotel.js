@@ -1,4 +1,4 @@
-import { read } from "../actions/hotel";
+import { isAlreadyBooked, read } from "../actions/hotel";
 import { paymentSuccess } from "../actions/payments";
 import { useNavigate, useParams } from "react-router-dom";
 import { Fragment, useState, useEffect } from "react";
@@ -10,6 +10,7 @@ const ViewHotel = () => {
     const params = useParams();
     const [hotel, setHotel] = useState({});
     const [image, setImage] = useState("");
+    const [alreadyBooked, setAlreadyBooked] = useState(false);
 
     const navigate = useNavigate();
 
@@ -18,6 +19,18 @@ const ViewHotel = () => {
     }, []);
 
     const { auth } = useSelector((state) => ({ ...state }));
+
+    useEffect(() => {
+        if (auth && auth.token) {
+            isAlreadyBooked(auth.token, params.hotelId, auth.user._id).then(
+                (res) => {
+                    if (res.data.ok) {
+                        setAlreadyBooked(true);
+                    }
+                }
+            );
+        }
+    }, []);
 
     const loadSellerHotel = async () => {
         let res = await read(params.hotelId);
@@ -78,8 +91,12 @@ const ViewHotel = () => {
             <span>For {diffDays}</span>
             <p>Available from {fromDate}</p>
             <p>Posted by {hotel.postedBy && hotel.postedBy.name}</p>
-            <button onClick={clickHandler}>
-                {auth && auth.token ? "Book Now" : "Login to Book"}
+            <button onClick={clickHandler} disabled={alreadyBooked}>
+                {alreadyBooked
+                    ? "Already Booked"
+                    : auth && auth.token
+                    ? "Book Now"
+                    : "Login to Book"}
             </button>
         </Fragment>
     );

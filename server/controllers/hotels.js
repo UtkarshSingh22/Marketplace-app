@@ -104,3 +104,28 @@ export const userHotelBookings = async (req, res) => {
         );
     }
 };
+
+export const isAlreadyBooked = async (req, res) => {
+    try {
+        const { hotelId } = req.params;
+
+        const userOrders = await Order.find({ userId: req.headers.userid })
+            .select("hotelId")
+            .exec();
+
+        let ids = [];
+
+        for (let index = 0; index < userOrders.length; index++) {
+            ids.push(userOrders[index].hotelId.toString());
+        }
+
+        console.log(userOrders);
+        console.log(ids);
+
+        res.json({
+            ok: ids.includes(hotelId),
+        });
+    } catch (error) {
+        res.status(400).send("Some error occurred, please try again.");
+    }
+};

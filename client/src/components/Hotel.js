@@ -25,15 +25,15 @@ const Hotel = ({ hotel, owner = false, showViewMoreButton = true }) => {
             <div>
                 <h3>{hotel.title}</h3>
                 <p>₹{hotel.price}/night</p>
-                <p>{`${hotel.content.substring(0, 200)}...`}</p>
-                <p>{hotel.location}</p>
-
                 <p>
                     For {differenceInDates(hotel.from, hotel.to)}{" "}
                     {differenceInDates(hotel.from, hotel.to) <= 1
                         ? " day"
                         : " days"}
                 </p>
+                <p>{`${hotel.content.substring(0, 200)}...`}</p>
+                <p>{hotel.location}</p>
+
                 <p>
                     {hotel.bed} {hotel.bed <= 1 ? " bed" : " beds"}
                 </p>
