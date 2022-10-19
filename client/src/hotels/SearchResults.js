@@ -3,6 +3,7 @@ import { useSearchParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { searchListings } from "../actions/hotel";
 import Search from "../components/forms/Search";
+import Hotel from "../components/Hotel";
 
 const SearchResults = () => {
     const [searchParams] = useSearchParams();
@@ -24,7 +25,12 @@ const SearchResults = () => {
 
     return (
         <Fragment>
-            <div>search result</div>
+            <h2>Search Results</h2>
+            <div>
+                {hotels.map((hotel) => {
+                    return <Hotel hotel={hotel} key={hotel._id} />;
+                })}
+            </div>
         </Fragment>
     );
 };

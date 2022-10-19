@@ -134,9 +134,7 @@ export const searchListings = async (req, res) => {
     try {
         const { location, fromDate, toDate } = req.body;
 
-        let result = await Hotel.find({})
-            .select("-imageData -imageContentType")
-            .exec();
+        let result = await Hotel.find({}).select("-imageData").exec();
 
         let finalListings = [];
 
@@ -161,7 +159,6 @@ export const searchListings = async (req, res) => {
 
         res.json(finalListings);
     } catch (error) {
-        console.log(error);
-        // res.status(400).send("Something went wrong, try again.");
+        res.status(400).send("Something went wrong, try again.");
     }
 };
