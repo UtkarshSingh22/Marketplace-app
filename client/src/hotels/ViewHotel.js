@@ -42,7 +42,7 @@ const ViewHotel = () => {
             } else {
                 if (hotel.postedBy._id === auth.user._id) {
                     toast.warn(
-                        "This hotel was posted by you. No booking can be done."
+                        "This hotel was posted by you. It can't be booked."
                     );
                 } else if (!auth.user.isConnectedForPayouts) {
                     window.localStorage.setItem("from", "booking");

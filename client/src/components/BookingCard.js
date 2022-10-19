@@ -5,6 +5,10 @@ import OrderModal from "./modals/OrderModal";
 const BookingCard = ({ hotel, user, id }) => {
     const [showModal, setShowModal] = useState(false);
 
+    const toggleModal = () => {
+        setShowModal(!showModal);
+    };
+
     let fromDate = convertDateToNormalFormat(hotel.from);
     let toDate = convertDateToNormalFormat(hotel.to);
 
@@ -35,10 +39,15 @@ const BookingCard = ({ hotel, user, id }) => {
                     Booking dates: {fromDate} to {toDate}
                 </p>
             </div>
-            {showModal && <OrderModal props={(hotel, user, id)} />}
-            <button onClick={() => setShowModal(!showModal)}>
-                Show payment info
-            </button>
+            {showModal && (
+                <OrderModal
+                    hotel={hotel}
+                    user={user}
+                    id={id}
+                    onToggle={toggleModal}
+                />
+            )}
+            <button onClick={toggleModal}>Show payment info</button>
         </div>
     );
 };
