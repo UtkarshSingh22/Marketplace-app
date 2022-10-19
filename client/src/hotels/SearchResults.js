@@ -1,6 +1,7 @@
 import { Fragment, useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { searchListings } from "../actions/hotel";
 import Search from "../components/forms/Search";
 
 const SearchResults = () => {
@@ -9,16 +10,16 @@ const SearchResults = () => {
     const [location, setLocation] = useState("");
     const [fromDate, setFromDate] = useState("");
     const [toDate, setToDate] = useState("");
-    const [bed, setBed] = useState("");
     const [hotels, setHotels] = useState([]);
 
     useEffect(() => {
         const location = searchParams.get("location");
         const fromDate = searchParams.get("fromDate");
         const toDate = searchParams.get("toDate");
-        const bed = searchParams.get("bed");
 
-        console.table({ location, fromDate, toDate, bed });
+        searchListings({ location, fromDate, toDate }).then((res) => {
+            setHotels(res.data);
+        });
     }, [window.location.search]);
 
     return (

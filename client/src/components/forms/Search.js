@@ -7,11 +7,10 @@ const Search = () => {
     const [location, setLocation] = useState("");
     const [fromDate, setFromDate] = useState("");
     const [toDate, setToDate] = useState("");
-    const [bed, setBed] = useState("");
 
     const submitHandler = () => {
         navigate(
-            `/search-result?location=${location}&fromDate=${fromDate}&toDate=${toDate}&bed=${bed}`
+            `/search-result?location=${location}&fromDate=${fromDate}&toDate=${toDate}`
         );
     };
 
@@ -42,19 +41,6 @@ const Search = () => {
                 min={fromDate}
                 disabled={fromDate.length === 0}
             />
-
-            <select
-                onChange={(e) => setBed(e.target.value)}
-                name="bed"
-                value={bed}
-            >
-                <option value="">Number of beds</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-            </select>
 
             <button onClick={submitHandler}>Search</button>
         </div>

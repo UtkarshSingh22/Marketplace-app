@@ -129,3 +129,39 @@ export const isAlreadyBooked = async (req, res) => {
         res.status(400).send("Some error occurred, please try again.");
     }
 };
+
+export const searchListings = async (req, res) => {
+    try {
+        const { location, fromDate, toDate } = req.body;
+
+        let result = await Hotel.find({})
+            .select("-imageData -imageContentType")
+            .exec();
+
+        let finalListings = [];
+
+        for (let hotel of result) {
+            const hotelLocation = hotel.location.toLowerCase();
+            let from = hotel.from.toString();
+            let date = from.split("T")[0].split("-");
+            let dateFrom = fromDate.split("-");
+
+            if (hotelLocation.includes(location.toLowerCase().trim())) {
+                if (
+                    date[0] > dateFrom[0] ||
+                    (date[0] === dateFrom[0] && date[1] > dateFrom[1]) ||
+                    (date[0] === dateFrom[0] &&
+                        date[1] === dateFrom[1] &&
+                        date[2] >= dateFrom[2])
+                ) {
+                    finalListings.push(hotel);
+                }
+            }
+        }
+
+        res.json(finalListings);
+    } catch (error) {
+        console.log(error);
+        // res.status(400).send("Something went wrong, try again.");
+    }
+};
