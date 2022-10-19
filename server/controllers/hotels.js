@@ -119,9 +119,6 @@ export const isAlreadyBooked = async (req, res) => {
             ids.push(userOrders[index].hotelId.toString());
         }
 
-        console.log(userOrders);
-        console.log(ids);
-
         res.json({
             ok: ids.includes(hotelId),
         });
@@ -140,17 +137,16 @@ export const searchListings = async (req, res) => {
 
         for (let hotel of result) {
             const hotelLocation = hotel.location.toLowerCase();
-            let from = hotel.from.toString();
-            let date = from.split("T")[0].split("-");
+            let date = hotel.from.toLocaleString().split(",")[0].split("/");
             let dateFrom = fromDate.split("-");
 
             if (hotelLocation.includes(location.toLowerCase().trim())) {
                 if (
-                    date[0] > dateFrom[0] ||
-                    (date[0] === dateFrom[0] && date[1] > dateFrom[1]) ||
-                    (date[0] === dateFrom[0] &&
+                    date[2] > dateFrom[0] ||
+                    (date[2] === dateFrom[0] && date[1] > dateFrom[1]) ||
+                    (date[2] === dateFrom[0] &&
                         date[1] === dateFrom[1] &&
-                        date[2] >= dateFrom[2])
+                        date[0] >= dateFrom[2])
                 ) {
                     finalListings.push(hotel);
                 }
