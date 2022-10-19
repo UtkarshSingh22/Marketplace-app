@@ -30,7 +30,7 @@ const ConnectNav = () => {
             </div>
             {auth && auth.user && (
                 <div>
-                    <div>Balance: {balance}</div>
+                    <div>Balance: ₹{balance}</div>
                 </div>
             )}
         </div>

@@ -40,7 +40,11 @@ const ViewHotel = () => {
             if (!auth) {
                 navigate("/login");
             } else {
-                if (!auth.user.isConnectedForPayouts) {
+                if (hotel.postedBy._id === auth.user._id) {
+                    toast.warn(
+                        "This hotel was posted by you. No booking can be done."
+                    );
+                } else if (!auth.user.isConnectedForPayouts) {
                     window.localStorage.setItem("from", "booking");
                     navigate("/connect-payouts");
                 } else {
@@ -48,7 +52,9 @@ const ViewHotel = () => {
                         await paymentSuccess(
                             auth.token,
                             params.hotelId,
-                            auth.user._id
+                            auth.user._id,
+                            hotel.postedBy._id,
+                            hotel.price
                         );
 
                         navigate("/hotel/payment-success");

@@ -16,12 +16,20 @@ export const connectPayouts = async ({ email, accountNum, ifsc, token }) => {
     );
 };
 
-export const paymentSuccess = async (token, hotelId, userId) => {
+export const paymentSuccess = async (
+    token,
+    hotelId,
+    userId,
+    postedById,
+    price
+) => {
     return await axios.post(
         `${process.env.REACT_APP_API}/payment-success`,
         {
             hotelId,
             userId,
+            postedById,
+            price,
         },
         {
             headers: {

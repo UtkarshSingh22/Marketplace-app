@@ -33,7 +33,7 @@ export const connectPayouts = async (req, res, next) => {
 
 export const paymentSuccess = async (req, res) => {
     try {
-        const { hotelId, userId } = req.body;
+        const { hotelId, userId, postedById, price } = req.body;
 
         const order = new Order({
             hotelId: hotelId,
@@ -41,6 +41,20 @@ export const paymentSuccess = async (req, res) => {
         });
 
         await order.save();
+
+        const currBal = await User.findById(postedById)
+            .select("balance")
+            .exec();
+
+        console.log(price);
+
+        await User.findByIdAndUpdate(
+            postedById,
+            { balance: currBal.balance + price },
+            {
+                new: true,
+            }
+        ).exec();
 
         res.json({
             ok: true,
