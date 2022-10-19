@@ -12,7 +12,7 @@ const ConnectNav = () => {
             </div>
             {auth && auth.user && (
                 <Fragment>
-                    <div>Pending balance</div>
+                    <div>Balance</div>
                     <div>Payout settings</div>
                 </Fragment>
             )}

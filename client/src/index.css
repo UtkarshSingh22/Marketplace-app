@@ -12,3 +12,9 @@ img {
     width: 250px;
     height: 150px;
 }
+
+.modal{
+    width: 400px;
+    height: 250px;
+    background-color: rgb(174, 174, 174);
+}

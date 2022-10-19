@@ -5,6 +5,7 @@ import DashboardNav from "../components/DashboardNav";
 import { toast } from "react-toastify";
 import { userHotelBookings } from "../actions/hotel";
 import { useSelector } from "react-redux";
+import BookingCard from "../components/BookingCard";
 
 const Dashboard = () => {
     const { auth } = useSelector((state) => ({ ...state }));
@@ -37,7 +38,18 @@ const Dashboard = () => {
             <div>
                 <Link to="/">Browse Hotels</Link>
             </div>
-            <div>{JSON.stringify(bookings, null, 4)}</div>
+            <div>
+                {bookings.map((booking) => {
+                    return (
+                        <BookingCard
+                            key={booking._id}
+                            hotel={booking.hotelId}
+                            user={booking.userId}
+                            id={booking._id}
+                        />
+                    );
+                })}
+            </div>
         </Fragment>
     );
 };

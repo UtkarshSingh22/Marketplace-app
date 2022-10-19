@@ -3,7 +3,7 @@ import { createHotel } from "../actions/hotel";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { convertDate } from "../utils/convertDate";
-import HotelCreateForm from "../forms/HotelCreateForm";
+import HotelCreateForm from "../components/forms/HotelCreateForm";
 import { useNavigate } from "react-router-dom";
 
 const NewHotel = () => {

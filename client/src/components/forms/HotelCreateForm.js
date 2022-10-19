@@ -1,5 +1,5 @@
 import { Fragment } from "react";
-import { convertDateToNormalFormat } from "../utils/convertDate";
+import { convertDateToNormalFormat } from "../../utils/convertDate";
 
 const HotelCreateForm = ({
     changeHandler,

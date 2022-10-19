@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { useNavigate, useParams } from "react-router-dom";
 import { convertDate } from "../utils/convertDate";
-import HotelCreateForm from "../forms/HotelCreateForm";
+import HotelCreateForm from "../components/forms/HotelCreateForm";
 
 const EditHotel = () => {
     const params = useParams();
@@ -78,7 +78,7 @@ const EditHotel = () => {
             );
             window.localStorage.setItem("reload", "true");
 
-            navigate('/dashboard/seller')
+            navigate("/dashboard/seller");
 
             window.location.reload();
         } catch (err) {
