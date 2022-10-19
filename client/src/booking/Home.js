@@ -1,5 +1,6 @@
 import { Fragment, useEffect, useState } from "react";
 import { allHotels } from "../actions/hotel";
+import Search from "../components/forms/Search";
 import Hotel from "../components/Hotel";
 
 const Home = () => {
@@ -17,6 +18,7 @@ const Home = () => {
     return (
         <Fragment>
             <h1>All Hotels</h1>
+            <Search />
             <div>
                 {hotels.map((hotel) => {
                     return <Hotel key={hotel._id} hotel={hotel} />;
