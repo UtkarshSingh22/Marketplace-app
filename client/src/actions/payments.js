@@ -30,3 +30,12 @@ export const paymentSuccess = async (token, hotelId, userId) => {
         }
     );
 };
+
+export const getBalance = async (token, userId) => {
+    return await axios.get(`${process.env.REACT_APP_API}/get-balance`, {
+        headers: {
+            Authorization: `Bearer ${token}`,
+            userId: userId,
+        },
+    });
+};

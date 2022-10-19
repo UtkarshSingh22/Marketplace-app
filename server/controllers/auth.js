@@ -29,12 +29,11 @@ exports.register = async (req, res, next) => {
             isConnectedForPayouts: false,
             accountNumber: "",
             ifscCode: "",
+            balance: 0,
         });
         await user.save();
-        console.log("User registered!");
         return res.json({ ok: true });
     } catch (err) {
-        console.log("Create user failed", err);
         return res.status(400).send("Error. Try again.");
     }
 };
@@ -86,7 +85,6 @@ exports.login = async (req, res, next) => {
             });
         });
     } catch (err) {
-        console.log("Login error", err);
         res.status(400).send("Sign in failed.");
     }
 };

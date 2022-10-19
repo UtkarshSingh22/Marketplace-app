@@ -31,6 +31,9 @@ const userSchema = new Schema(
             type: String,
             trim: true,
         },
+        balance: {
+            type: Number,
+        },
     },
     { timeseries: true }
 );

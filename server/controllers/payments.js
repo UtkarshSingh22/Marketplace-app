@@ -49,3 +49,18 @@ export const paymentSuccess = async (req, res) => {
         res.status(400).send("Payment failed, please try again.");
     }
 };
+
+export const getBalance = async (req, res) => {
+    try {
+        const userId = req.headers.userid;
+
+        let bal = await User.findOne({ _id: userId }).select("balance").exec();
+        console.log(bal);
+
+        res.json({
+            balance: bal,
+        });
+    } catch (error) {
+        res.status(400).send("Unable to fetch your balance.");
+    }
+};
