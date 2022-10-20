@@ -6,6 +6,7 @@ import Hotel from "../components/Hotel";
 import styles from "./Home.module.css";
 import mainImage from "../images/hotel-blue.jpg";
 import { useSelector } from "react-redux";
+import Button from "../components/Button";
 
 const Home = () => {
     const [hotels, setHotels] = useState([]);
@@ -42,7 +43,7 @@ const Home = () => {
                                     Register
                                 </Link>
                             )}
-                            <button>Browse hotels &darr;</button>
+                            <Button>Browse hotels &darr;</Button>
                         </div>
                         {!loggedInUser && (
                             <div className={styles.login}>
@@ -70,6 +71,12 @@ const Home = () => {
                     </div>
                 </div>
             </article>
+            <footer>
+                <p>
+                    Copyright © {new Date().getFullYear()} by Hotelswind, Inc.
+                    All rights reserved.
+                </p>
+            </footer>
         </main>
     );
 };

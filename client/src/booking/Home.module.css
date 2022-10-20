@@ -47,8 +47,7 @@
     display: flex;
     gap: 4.8rem;
 }
-.register,
-.buttons > button {
+.register {
     background-color: #39a7af;
     padding: 0.8rem 2.4rem;
     border-radius: 100rem;
@@ -66,16 +65,10 @@
 .buttons > button {
     background-color: #fff;
     color: rgb(36, 36, 36);
-    cursor: pointer;
 }
 .register:hover {
     background-color: #fff;
     color: #39a7af;
-}
-.buttons > button:hover {
-    background-color: rgb(36, 36, 36);
-    color: #fff;
-    border: 2px solid #39a7af;
 }
 .login {
     font-size: 1.6rem;
@@ -107,4 +100,12 @@
 .hotelsList {
     display: flex;
     flex-direction: column;
+    gap: 3.2rem;
+}
+footer {
+    display: flex;
+    justify-content: center;
+    font-size: 1.6rem;
+    padding: 0.8rem;
+    background-color: #c5eaed;
 }

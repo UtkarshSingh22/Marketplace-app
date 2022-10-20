@@ -1,0 +1,66 @@
+.hotel {
+    display: flex;
+    width: 100rem;
+    gap: 4.8rem;
+    padding: 2.4rem;
+    background-color: rgb(36, 36, 36);
+    border-radius: 1rem;
+    transition: all 0.3s;
+}
+.hotel:hover {
+    box-shadow: 0 2.4rem 4.8rem rgba(0, 0, 0, 0.4);
+    transform: translateY(-0.6rem);
+}
+.img > img {
+    width: 40rem;
+    height: auto;
+}
+.content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+    justify-content: space-between;
+    width: 100%;
+}
+.text {
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+}
+.description > h2 {
+    font-size: 2.4rem;
+}
+.text > p {
+    font-size: 1.4rem;
+    margin-bottom: 1.2rem;
+    letter-spacing: 1px;
+}
+.description {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 2.4rem;
+}
+.location {
+    background-color: #c5eaed;
+    color: rgb(36, 36, 36);
+    padding: 0.4rem 0;
+    font-weight: 600;
+    padding-left: 0.4rem;
+}
+.price {
+    background-color: #3fbac2;
+    padding: 0.8rem;
+    font-size: 1.6rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    border-radius: 4px;
+    color: rgb(36, 36, 36);
+}
+.btn > button {
+    background-color: #fff;
+    border-radius: 4px;
+    color: rgb(36, 36, 36);
+    font-size: 1.6rem;
+    padding: 0.6rem 1rem;
+}
