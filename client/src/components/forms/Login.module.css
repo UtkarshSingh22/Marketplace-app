@@ -1,0 +1,60 @@
+.login {
+    display: flex;
+    height: 80vh;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 60rem;
+    margin: 0 auto;
+    padding: 5rem;
+}
+.login > div {
+    border: 0.6rem solid rgb(36, 36, 36);
+    margin-top: 5rem;
+    width: 45rem;
+    height: 70rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    gap: 4.8rem;
+    background-color: #3fbac2;
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.6);
+}
+.login > div > h1 {
+    font-size: 4.4rem;
+}
+.inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+.inputs > label {
+    font-size: 2rem;
+    text-transform: uppercase;
+}
+.inputs > input {
+    font-size: 2.4rem;
+    height: 3.6rem;
+    width: 34rem;
+    background-color: #d9f1f3;
+}
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 3.2rem;
+    align-items: center;
+}
+.form > button {
+    height: 3.6rem;
+    margin-top: 3.6rem;
+    width: 60%;
+    font-size: 2.4rem;
+    display: flex;
+    justify-content: center;
+    background-color: #d9f1f3;
+    color: rgb(36, 36, 36);
+}
+.form > button:hover {
+    border: 3px solid rgb(36, 36, 36);
+}

@@ -1,10 +1,11 @@
-import { Fragment, useState } from "react";
+import { useState } from "react";
 import { toast } from "react-toastify";
 import { login } from "../actions/auth";
 import { useDispatch } from "react-redux";
 import { authActions } from "../store/slices/auth";
 import { useNavigate } from "react-router-dom";
 import LoginForm from "../components/forms/LoginForm";
+import styles from "../components/forms/Login.module.css";
 
 const Login = () => {
     const dispatch = useDispatch();
@@ -48,16 +49,18 @@ const Login = () => {
         setPasswordInput("");
     };
     return (
-        <Fragment>
-            <h1>Login</h1>
-            <LoginForm
-                emailInput={emailInput}
-                passwordInput={passwordInput}
-                emailInputHandler={emailInputHandler}
-                passwordInputHandler={passwordInputHandler}
-                formSubmitHandler={formSubmitHandler}
-            />
-        </Fragment>
+        <section className={styles.login}>
+            <div>
+                <h1>Login</h1>
+                <LoginForm
+                    emailInput={emailInput}
+                    passwordInput={passwordInput}
+                    emailInputHandler={emailInputHandler}
+                    passwordInputHandler={passwordInputHandler}
+                    formSubmitHandler={formSubmitHandler}
+                />
+            </div>
+        </section>
     );
 };
 

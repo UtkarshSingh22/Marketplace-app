@@ -1,3 +1,6 @@
+import styles from "./Login.module.css";
+import Button from "../Button";
+
 const LoginForm = ({
     emailInput,
     passwordInput,
@@ -6,24 +9,27 @@ const LoginForm = ({
     formSubmitHandler,
 }) => {
     return (
-        <form onSubmit={formSubmitHandler}>
-            <label htmlFor="email">Email</label>
-            <input
-                type="email"
-                id="email"
-                onChange={emailInputHandler}
-                value={emailInput}
-                placeholder="test@test.com"
-            />
-            <label htmlFor="password">Password</label>
-            <input
-                type="password"
-                id="password"
-                onChange={passwordInputHandler}
-                value={passwordInput}
-            />
+        <form onSubmit={formSubmitHandler} className={styles.form}>
+            <div className={styles.inputs}>
+                <label htmlFor="email">Email</label>
+                <input
+                    type="email"
+                    id="email"
+                    onChange={emailInputHandler}
+                    value={emailInput}
+                />
+            </div>
+            <div className={styles.inputs}>
+                <label htmlFor="password">Password</label>
+                <input
+                    type="password"
+                    id="password"
+                    onChange={passwordInputHandler}
+                    value={passwordInput}
+                />
+            </div>
 
-            <button type="submit">Sign in</button>
+            <Button type="submit">Sign in</Button>
         </form>
     );
 };
