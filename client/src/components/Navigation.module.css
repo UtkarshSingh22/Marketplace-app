@@ -1,0 +1,73 @@
+.nav {
+    width: 100vw;
+    background-color: rgb(36, 36, 36);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 16rem;
+}
+.navFirst {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #fff;
+}
+.logoTop {
+    display: flex;
+    font-size: 3.2rem;
+    align-items: center;
+    letter-spacing: -0.5px;
+}
+.logo {
+    width: 5rem;
+    height: 5rem;
+    border-radius: 50%;
+    margin: 0 -5px;
+}
+.logoBottom {
+    color: #3fbac2;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+.navSec {
+    display: flex;
+    gap: 12rem;
+    font-size: 2rem;
+    align-items: center;
+    letter-spacing: 1.2px;
+}
+.register:hover {
+    background-color: white;
+}
+.navSec > a:hover {
+    color: #39a7af;
+}
+.register.active {
+    border: 3px solid white;
+}
+.navSec > a {
+    color: #fff;
+    text-decoration: none;
+    transition: all 0.4s;
+    font-weight: 500;
+}
+.home,
+.logout,
+.dashboard,
+.login {
+    border-bottom: 3px solid rgb(36, 36, 36);
+}
+
+.register {
+    background-color: #39a7af;
+    padding: 0.8rem 2.4rem;
+    border-radius: 100rem;
+    border: 2px solid #39a7af;
+}
+
+.home.active,
+.logout.active,
+.dashboard.active,
+.login.active {
+    border-bottom: 3px solid #39a7af;
+}

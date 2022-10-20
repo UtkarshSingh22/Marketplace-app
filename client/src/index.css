@@ -1,5 +1,65 @@
-a {
-    cursor: pointer;
+/*
+--- 01 Typography System
+Font Sizes(px)
+- 10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 / 52 / 62 / 74 / 86 / 98
+
+Font Weights
+default: 400
+medium - 500
+semi-bold - 600
+bold - 700
+
+Line Heights
+default : 1
+small - 1.05
+medium - 1.2
+paragraph default - 1.6
+
+Letter Spacing
+-0.5px
+0.75px
+
+--- 02 COLORS
+
+Primary - #3FBAC2
+Tints: #d9f1f3, #c5eaed;
+Shades:#39a7af, #32959b
+Accents:
+Greys: 
+rgb(36, 36, 36);
+#3B4048
+#464B52
+
+
+-- 03 SHADOWS
+
+---04 BORDER RADIUS
+9px
+11px
+
+---05 WHITESPACES
+
+- SPACING SYSTEM (px) - 
+2 / 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 80 / 96 / 128
+
+*/
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-family: "Rubik", sans-serif;
+    line-height: 1;
+    font-weight: 400;
+    color: #3b4048;
+    overflow-x: hidden;
 }
 
 /* dashboard nav active class*/
@@ -13,7 +73,7 @@ img {
     height: 150px;
 }
 
-.modal{
+.modal {
     width: 400px;
     height: 250px;
     background-color: rgb(174, 174, 174);
