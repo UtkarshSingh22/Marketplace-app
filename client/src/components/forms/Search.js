@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import styles from "./Search.module.css";
+import { MagnifyingGlass } from "phosphor-react";
 
 const Search = () => {
     const navigate = useNavigate();
@@ -15,35 +17,50 @@ const Search = () => {
     };
 
     return (
-        <div>
-            <input
-                placeholder="Location"
-                type="text"
-                onChange={(e) => setLocation(e.target.value)}
-                value={location}
-            />
+        <section className={styles.cover}>
+            <div className={styles.inputs}>
+                <label>Location</label>
+                <input
+                    className={styles.input}
+                    placeholder="Bangalore, India"
+                    type="text"
+                    onChange={(e) => setLocation(e.target.value)}
+                    value={location}
+                    required
+                />
+            </div>
 
-            <label>From date</label>
-            <input
-                type="date"
-                name="from"
-                onChange={(e) => setFromDate(e.target.value)}
-                value={fromDate}
-                min={new Date().toISOString().split("T")[0]}
-            />
+            <div className={styles.inputs}>
+                <label>From date</label>
+                <input
+                    className={styles.input}
+                    type="date"
+                    name="from"
+                    onChange={(e) => setFromDate(e.target.value)}
+                    value={fromDate}
+                    min={new Date().toISOString().split("T")[0]}
+                />
+            </div>
 
-            <label>To date</label>
-            <input
-                type="date"
-                name="to"
-                onChange={(e) => setToDate(e.target.value)}
-                value={toDate}
-                min={fromDate}
-                disabled={fromDate.length === 0}
-            />
+            <div className={styles.inputs}>
+                <label>To date</label>
+                <input
+                    className={styles.input}
+                    type="date"
+                    name="to"
+                    onChange={(e) => setToDate(e.target.value)}
+                    value={toDate}
+                    min={fromDate}
+                    disabled={fromDate.length === 0}
+                />
+            </div>
 
-            <button onClick={submitHandler}>Search</button>
-        </div>
+            <div className={styles.button}>
+                <button onClick={submitHandler}>
+                    <MagnifyingGlass size={32} />
+                </button>
+            </div>
+        </section>
     );
 };
 

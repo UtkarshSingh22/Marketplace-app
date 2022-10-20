@@ -1,0 +1,30 @@
+.cover {
+    display: flex;
+    align-items: flex-end;
+    gap: 0.8rem;
+}
+.input {
+    font-size: 2rem;
+    height: 4rem;
+    width: 30rem;
+    background-color: #ecf8f9;
+    color: rgb(36, 36, 36);
+}
+.inputs {
+    display: flex;
+    flex-direction: column;
+}
+.inputs > label {
+    text-transform: uppercase;
+    font-size: 1.6rem;
+}
+.button > button {
+    border: 2px solid #ecf8f9;
+    background-color: #ecf8f9;
+    transition: all 0.2s;
+}
+.button > button:hover {
+    background-color: rgb(36, 36, 36);
+    color: #fff;
+    border-color: rgb(36, 36, 36);
+}
