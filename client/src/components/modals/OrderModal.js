@@ -10,14 +10,16 @@ const Backdrop = (props) => {
 const Overlay = ({ hotel, user, id, onToggle }) => {
     return (
         <div className={styles.modal}>
-            <h2>Booking payment info</h2>
-            <button onClick={onToggle}>X</button>
+            <div className={styles.title}>
+                <h2>Booking payment info</h2>
+                <button onClick={onToggle}>X</button>
+            </div>
             <p>Booking ID: {id}</p>
             <p>Customer ID: {user._id}</p>
-            <p>Customer Name: { user.name}</p>
+            <p>Customer Name: {user.name}</p>
             <p>Payment status: Paid</p>
-            <p>Total amount: ₹{hotel.price}/night</p>
-            <p>Booked from: { convertDateToNormalFormat(hotel.from)}</p>
+            <p>Total amount: ₹{hotel.price}</p>
+            <p>Booked from: {convertDateToNormalFormat(hotel.from)}</p>
         </div>
     );
 };

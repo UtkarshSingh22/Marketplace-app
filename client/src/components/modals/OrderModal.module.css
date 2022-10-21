@@ -1,16 +1,34 @@
 .modal {
     position: fixed;
     left: 50%;
-    top: 10vh;
+    top: 20vh;
     width: 40vw;
-    background-color: rgb(255, 255, 255);
+    background-color: #79cfd4;
     color: rgb(0, 0, 0);
-    box-shadow: 0 4px 10px rgb(10, 10, 10);
+    box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.2);
     transform: translate(-50%);
-    border-radius: 14px;
-    padding: 1.5rem;
+    border-radius: 1rem;
+    padding: 2.4rem;
     z-index: 30;
-    min-width: 400px;
+    max-width: 80rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2.4rem;
+}
+.title {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.6rem;
+}
+.title>button{
+    width: 2rem;
+    height: 2rem;
+    border: none;
+    font-weight: 600;
+    border-radius: 4px;
+}
+.modal > p {
+    font-size: 1.6rem;
 }
 
 .backdrop {
