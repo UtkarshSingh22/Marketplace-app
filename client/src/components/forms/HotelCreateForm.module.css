@@ -1,0 +1,70 @@
+.form {
+    width: 100%;
+    display: grid;
+    grid-template: 1fr 1fr 2fr 1fr 1fr / repeat(2, 1fr);
+    gap: 1rem;
+    column-gap: 3rem;
+}
+.form > input,
+.form > select,
+.form > textarea,
+.date > input {
+    background-color: #d9f1f3;
+    border-radius: 4px;
+}
+
+.form > input,
+.form > select,
+.image {
+    height: 4rem;
+    font-size: 1.8rem;
+}
+.form > textarea {
+    max-height: 8rem;
+    min-height: 8rem;
+    max-width: 26rem;
+    min-width: 30rem;
+    font-size: 2rem;
+}
+
+.image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #3fbac2;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.3s;
+}
+.date {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    top: -2rem;
+}
+.date > label {
+    font-size: 1.6rem;
+    text-transform: uppercase;
+}
+.date > input {
+    height: 4rem;
+    font-size: 1.8rem;
+}
+.btn {
+    grid-column: 1/3;
+    place-self: center;
+    width: 50%;
+    height: 70%;
+    background-color: #3fbac2;
+    color: #fff;
+    font-size: 2.4rem;
+    border-radius: 4px;
+    transition: all 0.3s;
+    cursor: pointer;
+}
+.image:hover,
+.btn:hover {
+    border: 3px solid #3fbac2;
+    background-color: rgb(36, 36, 36);
+}

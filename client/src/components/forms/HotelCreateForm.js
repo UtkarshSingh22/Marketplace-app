@@ -1,5 +1,5 @@
 import { Fragment } from "react";
-import { convertDateToNormalFormat } from "../../utils/convertDate";
+import styles from "./HotelCreateForm.module.css";
 
 const HotelCreateForm = ({
     changeHandler,
@@ -13,8 +13,16 @@ const HotelCreateForm = ({
 
     const hotelForm = () => {
         return (
-            <form onSubmit={formSubmitHandler}>
-                <label>
+            <form onSubmit={formSubmitHandler} className={styles.form}>
+                <input
+                    type="text"
+                    name="title"
+                    onChange={changeHandler}
+                    placeholder="Title"
+                    value={title}
+                    required
+                />
+                <label className={styles.image}>
                     Image
                     <input
                         type="file"
@@ -26,37 +34,20 @@ const HotelCreateForm = ({
                 </label>
 
                 <input
-                    type="text"
-                    name="title"
-                    onChange={changeHandler}
-                    placeholder="Title"
-                    value={title}
-                />
-
-                <textarea
-                    name="content"
-                    onChange={changeHandler}
-                    placeholder="Content"
-                    value={content}
-                />
-
-                <input
-                    type="text"
-                    name="location"
-                    onChange={changeHandler}
-                    placeholder="Address"
-                    value={location}
-                />
-
-                <input
                     type="number"
                     name="price"
                     onChange={changeHandler}
                     placeholder="Price"
                     value={price}
+                    required
                 />
 
-                <select onChange={changeHandler} name="bed" value={bed}>
+                <select
+                    onChange={changeHandler}
+                    name="bed"
+                    value={bed}
+                    required
+                >
                     <option value="">Number of beds</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -65,26 +56,49 @@ const HotelCreateForm = ({
                     <option value="5">5</option>
                 </select>
 
-                <label>From date</label>
-                <input
-                    type="date"
-                    name="from"
+                <textarea
+                    name="content"
                     onChange={changeHandler}
-                    value={from}
-                    min={new Date().toISOString().split("T")[0]}
+                    placeholder="Description"
+                    value={content}
                 />
 
-                <label>To date</label>
-                <input
-                    type="date"
-                    name="to"
+                <textarea
+                    name="location"
                     onChange={changeHandler}
-                    value={to}
-                    min={from}
-                    disabled={from.length === 0 && !edit}
+                    placeholder="Address"
+                    value={location}
+                    required
                 />
 
-                <button type="submit">Save</button>
+                <div className={styles.date}>
+                    <label>From date</label>
+                    <input
+                        type="date"
+                        name="from"
+                        onChange={changeHandler}
+                        value={from}
+                        min={new Date().toISOString().split("T")[0]}
+                        required
+                    />
+                </div>
+
+                <div className={styles.date}>
+                    <label>To date</label>
+                    <input
+                        type="date"
+                        name="to"
+                        onChange={changeHandler}
+                        value={to}
+                        min={from}
+                        disabled={from.length === 0 && !edit}
+                        required
+                    />
+                </div>
+
+                <button type="submit" className={styles.btn}>
+                    Save
+                </button>
             </form>
         );
     };

@@ -20,12 +20,17 @@
     justify-content: space-between;
     font-size: 1.6rem;
 }
-.title>button{
+.title > button {
     width: 2rem;
     height: 2rem;
     border: none;
     font-weight: 600;
     border-radius: 4px;
+    cursor: pointer;
+}
+.title > button:hover {
+    background-color: rgb(36, 36, 36);
+    color: #fff;
 }
 .modal > p {
     font-size: 1.6rem;

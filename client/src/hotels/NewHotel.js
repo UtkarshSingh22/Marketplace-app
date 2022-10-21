@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 import { convertDate } from "../utils/convertDate";
 import HotelCreateForm from "../components/forms/HotelCreateForm";
 import { useNavigate } from "react-router-dom";
+import styles from "./NewHotel.module.css";
 
 const NewHotel = () => {
     const { auth } = useSelector((state) => ({ ...state }));
@@ -32,7 +33,7 @@ const NewHotel = () => {
         bed: "",
     });
     const [preview, setPreview] = useState(
-        "https://via.placeholder.com/100x100.png?text=PREVIEW"
+        "https://via.placeholder.com/650x400.png?text=PREVIEW"
     );
 
     const { title, content, location, image, price, from, to, bed } = values;
@@ -87,17 +88,21 @@ const NewHotel = () => {
     };
 
     return (
-        <Fragment>
-            <h2>Add Hotel</h2>
-            <img src={preview} alt="preview_image" />
-            <HotelCreateForm
-                changeHandler={changeHandler}
-                imageChangeHandler={imageChangeHandler}
-                formSubmitHandler={formSubmitHandler}
-                values={values}
-                preview={preview}
-            />
-        </Fragment>
+        <section className={styles.new}>
+            <div className={styles.main}>
+                <h2>Add Hotel</h2>
+                <div className={styles.content}>
+                    <img src={preview} alt="preview_image" />
+                    <HotelCreateForm
+                        changeHandler={changeHandler}
+                        imageChangeHandler={imageChangeHandler}
+                        formSubmitHandler={formSubmitHandler}
+                        values={values}
+                        preview={preview}
+                    />
+                </div>
+            </div>
+        </section>
     );
 };
 

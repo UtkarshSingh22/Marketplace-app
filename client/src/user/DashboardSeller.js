@@ -6,6 +6,8 @@ import { useSelector } from "react-redux";
 import { sellerHotels } from "../actions/hotel";
 import Hotel from "../components/Hotel";
 import { toast } from "react-toastify";
+import styles from "./DashboardSeller.module.css";
+import Footer from "../components/Footer";
 
 const DashboardSeller = () => {
     const { auth } = useSelector((state) => ({ ...state }));
@@ -41,13 +43,13 @@ const DashboardSeller = () => {
 
     const connected = () => (
         <Fragment>
-            <div>
+            <div className={styles.title}>
+                <Link to="/hotels/new" className={styles.link}>
+                    + Add New
+                </Link>
                 <h2>Your Hotels</h2>
             </div>
-            <div>
-                <Link to="/hotels/new">+ Add New</Link>
-            </div>
-            <div>
+            <div className={styles.bookings}>
                 {hotels.map((hotel) => {
                     return (
                         <Hotel
@@ -83,12 +85,17 @@ const DashboardSeller = () => {
 
     return (
         <Fragment>
-            <ConnectNav />
+            <section className={styles.main}>
+                <nav className={styles.nav}>
+                    <ConnectNav />
+                    <DashboardNav />
+                </nav>
 
-            <DashboardNav />
-            {auth && auth.user && auth.user.isConnectedForPayouts
-                ? connected()
-                : notConnected()}
+                {auth && auth.user && auth.user.isConnectedForPayouts
+                    ? connected()
+                    : notConnected()}
+            </section>
+            <Footer />
         </Fragment>
     );
 };

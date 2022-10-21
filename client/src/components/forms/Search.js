@@ -39,6 +39,7 @@ const Search = () => {
                     onChange={(e) => setFromDate(e.target.value)}
                     value={fromDate}
                     min={new Date().toISOString().split("T")[0]}
+                    required
                 />
             </div>
 

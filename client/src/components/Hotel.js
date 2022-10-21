@@ -54,7 +54,14 @@ const Hotel = ({ hotel, owner = false, showViewMoreButton = true }) => {
                             Show more
                         </Button>
                     )}
-                    {owner && <Link to={`/hotel/edit/${hotel._id}`}>Edit</Link>}
+                    {owner && (
+                        <Link
+                            to={`/hotel/edit/${hotel._id}`}
+                            className={styles.link}
+                        >
+                            Edit
+                        </Link>
+                    )}
                 </div>
             </div>
         </section>
