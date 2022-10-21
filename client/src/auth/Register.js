@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import RegisterForm from "../components/forms/RegisterForm";
 import styles from "../components/forms/Register.module.css";
-import hotelImg from '../images/hotel-front.jpg'
+import hotelImg from "../images/hotel-front.jpg";
 
 const Register = () => {
     const navigate = useNavigate();

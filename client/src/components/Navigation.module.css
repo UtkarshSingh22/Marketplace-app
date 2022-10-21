@@ -42,6 +42,9 @@
 .navSec > a:hover {
     color: #39a7af;
 }
+.logout:hover{
+    color: red;
+}
 .register.active {
     border: 3px solid white;
 }
@@ -50,6 +53,11 @@
     text-decoration: none;
     transition: all 0.4s;
     font-weight: 500;
+}
+.logout {
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.4s;
 }
 .home,
 .logout,

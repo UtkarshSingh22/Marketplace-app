@@ -5,6 +5,8 @@ import { Fragment, useState, useEffect } from "react";
 import { differenceInDates } from "../utils/differnceInDates";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
+import Button from "../components/Button";
+import styles from "./ViewHotel.module.css";
 
 const ViewHotel = () => {
     const params = useParams();
@@ -82,23 +84,36 @@ const ViewHotel = () => {
     };
 
     return (
-        <Fragment>
-            <h2>{hotel.title}</h2>
-            <img src={image} alt={hotel.title} />
-            <br />
-            <b>{hotel.content}</b>
-            <p>{hotel.price}</p>
-            <span>For {diffDays}</span>
-            <p>Available from {fromDate}</p>
-            <p>Posted by {hotel.postedBy && hotel.postedBy.name}</p>
-            <button onClick={clickHandler} disabled={alreadyBooked}>
-                {alreadyBooked
-                    ? "Already Booked"
-                    : auth && auth.token
-                    ? "Book Now"
-                    : "Login to Book"}
-            </button>
-        </Fragment>
+        <section className={styles.main}>
+            <div className={styles.card}>
+                <header>
+                    <h2>{hotel.title}</h2>
+                </header>
+                <article>
+                    <img src={image} alt={hotel.title} className={styles.img} />
+                    <div className={styles.content}>
+                        <div className={styles.text}>
+                            <p className={styles.price}>₹{hotel.price}/night</p>
+                            <p className={styles.location}>{hotel.location}</p>
+                            <p>{hotel.content}</p>
+                            <p>For {diffDays}</p>
+                            <p>Available from {fromDate}</p>
+                            <p>
+                                Posted by{" "}
+                                {hotel.postedBy && hotel.postedBy.name}
+                            </p>
+                        </div>
+                        <Button onClick={clickHandler} disabled={alreadyBooked}>
+                            {alreadyBooked
+                                ? "Already Booked"
+                                : auth && auth.token
+                                ? "Book Now"
+                                : "Login to Book"}
+                        </Button>
+                    </div>
+                </article>
+            </div>
+        </section>
     );
 };
 

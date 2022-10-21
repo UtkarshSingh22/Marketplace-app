@@ -1,0 +1,65 @@
+.main {
+    height: 88.77vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #ecf8f9;
+}
+.card {
+    display: flex;
+    flex-direction: column;
+    padding: 2.4rem;
+    max-width: 130rem;
+    margin: 0 auto;
+}
+.card > header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #3fbac2;
+    padding: 1.6rem 0;
+}
+.card > header > h2 {
+    font-size: 5.2rem;
+}
+.img {
+    width: 50%;
+    height: auto;
+}
+.card > article {
+    display: flex;
+    gap: 4.4rem;
+    padding: 3.2rem 1.6rem;
+    background-color: rgb(36, 36, 36);
+}
+.content {
+    display: flex;
+    flex-direction: column;
+    gap: 4.8rem;
+}
+.text {
+    display: flex;
+    flex-direction: column;
+    gap: 3.2rem;
+    color: #fff;
+}
+.text > p {
+    font-size: 2.4rem;
+}
+.price {
+    color: #3fbac2;
+    background-color: #fff;
+    width: fit-content;
+    border-radius: 2rem;
+    padding: 1rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+.location {
+    color: #3fbac2;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+.content > button {
+    width: fit-content;
+}
