@@ -56,7 +56,7 @@ const Dashboard = () => {
                     })}
                 </div>
             </div>
-            <Footer />
+            <Footer className={styles.footer} />
         </section>
     );
 };

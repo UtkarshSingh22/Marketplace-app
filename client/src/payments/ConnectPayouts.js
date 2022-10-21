@@ -5,6 +5,8 @@ import { connectPayouts } from "../actions/payments";
 import ConnectPayoutsForm from "./ConnectPayoutsForm";
 import { useSelector, useDispatch } from "react-redux";
 import { authActions } from "../store/slices/auth";
+import { Bank } from "phosphor-react";
+import styles from "./ConnectPayouts.module.css";
 
 const ConnectPayouts = () => {
     const state = useSelector((state) => state.auth.user);
@@ -58,18 +60,22 @@ const ConnectPayouts = () => {
     };
 
     return (
-        <Fragment>
-            <h1>Connect your bank account</h1>
-            <ConnectPayoutsForm
-                nameInput={nameInput}
-                accountNum={accountNum}
-                ifsc={ifsc}
-                nameInputHandler={nameInputHandler}
-                accountNumHandler={accountNumHandler}
-                ifscHandler={ifscHandler}
-                formSubmitHandler={formSubmitHandler}
-            />
-        </Fragment>
+        <section className={styles.main}>
+            <div className={styles.content}>
+                <Bank size={64} className={styles.icon} />
+                <h1>Connect your bank account</h1>
+                <ConnectPayoutsForm
+                    nameInput={nameInput}
+                    accountNum={accountNum}
+                    ifsc={ifsc}
+                    nameInputHandler={nameInputHandler}
+                    accountNumHandler={accountNumHandler}
+                    ifscHandler={ifscHandler}
+                    formSubmitHandler={formSubmitHandler}
+                />
+                <p>It is a dummy form.</p>
+            </div>
+        </section>
     );
 };
 

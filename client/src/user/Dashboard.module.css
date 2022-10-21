@@ -1,3 +1,8 @@
+.main {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
 .dashNav {
     display: flex;
 }
@@ -41,4 +46,8 @@
     align-items: center;
     gap: 2.4rem;
     padding-bottom: 10rem;
+}
+.footer {
+    position: fixed;
+    bottom: 0;
 }

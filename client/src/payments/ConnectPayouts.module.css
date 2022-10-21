@@ -1,0 +1,60 @@
+.main {
+    height: 88.77vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 50rem;
+    margin: 0 auto;
+}
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(36, 36, 36);
+    color: #fff;
+    width: 100%;
+    padding: 3rem;
+    gap: 3.2rem;
+    border-radius: 0.8rem;
+    box-shadow: 0 2rem 3rem rgba(0,0,0,0.5);
+}
+.icon {
+    width: 10rem;
+    height: auto;
+    color: #3fbac2;
+}
+.content > h1 {
+    font-size: 2.4rem;
+    color: #3fbac2;
+}
+.content > p {
+    font-size: 1.4rem;
+}
+.form {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    gap: 2rem;
+}
+.form > div {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+.form > div > label {
+    text-transform: uppercase;
+    font-size: 1.6rem;
+}
+.form > div > input {
+    height: 3rem;
+    border-radius: 4px;
+    font-size: 1.8rem;
+}
+.form > button {
+    height: 4rem;
+    margin-top: 3rem;
+    font-size: 2rem;
+    background-color: #3fbac2;
+    color: #fff;
+}

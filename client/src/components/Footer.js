@@ -1,8 +1,9 @@
 import "../booking/Home.module.css";
 
-const Footer = () => {
+const Footer = (props) => {
+    const classes = `${props.className}`;
     return (
-        <footer>
+        <footer className={classes} {...props}>
             <p>
                 Copyright © {new Date().getFullYear()} by Hotelswind, Inc. All
                 rights reserved.

@@ -8,6 +8,8 @@ import Hotel from "../components/Hotel";
 import { toast } from "react-toastify";
 import styles from "./DashboardSeller.module.css";
 import Footer from "../components/Footer";
+import { Bank } from "phosphor-react";
+import Button from "../components/Button";
 
 const DashboardSeller = () => {
     const { auth } = useSelector((state) => ({ ...state }));
@@ -66,20 +68,21 @@ const DashboardSeller = () => {
 
     const notConnected = () => (
         <Fragment>
-            <div>
-                <h2>Connect with stripe</h2>
-            </div>
-            {/* home icon */}
-            <h4>Setup payouts to post hotel rooms</h4>
-            <p>
-                MERN partners with stripe to transfer earnings to your bank
-                account
-            </p>
-            <button onClick={payoutClickHandler}>Setup Payouts</button>
-            <p>
-                You'll be redirected to Stripe to complete the onboarding
-                process.
-            </p>
+            <section className={styles.content}>
+                <h2>Connect your Bank Account</h2>
+                <Bank size={32} className={styles.icon} />
+                <h3>Setup payouts to post hotel rooms</h3>
+                <p className={styles.para}>
+                    Hotelswind with Banks to transfer earnings to your bank
+                    account
+                </p>
+                <Button onClick={payoutClickHandler}>Setup Payouts</Button>
+                <p className={styles.small}>
+                    You'll be redirected to a form to complete the onboarding
+                    process.
+                </p>
+                <p className={styles.small2}>It is a dummy form.</p>
+            </section>
         </Fragment>
     );
 
@@ -95,7 +98,7 @@ const DashboardSeller = () => {
                     ? connected()
                     : notConnected()}
             </section>
-            <Footer />
+            <Footer className={styles.footer} />
         </Fragment>
     );
 };
