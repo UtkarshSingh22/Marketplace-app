@@ -10,7 +10,11 @@ const PaymentSuccess = () => {
             navigate("/dashboard");
         }, 1000);
     }, []);
-    return <h1>Payment Successful.</h1>;
+    return (
+        <div className="paymentSuccess">
+            <h1>Payment Successful.</h1>;
+        </div>
+    );
 };
 
 export default PaymentSuccess;

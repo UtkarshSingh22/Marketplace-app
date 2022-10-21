@@ -18,7 +18,7 @@ import SearchResults from "./hotels/SearchResults";
 function App() {
     return (
         <div className="App">
-            <ToastContainer position="top-center" />
+            <ToastContainer position="top-center" className="toast" />
             <Navigation />
             <Routes>
                 <Route path="/" element={<Home />} />

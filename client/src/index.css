@@ -73,3 +73,18 @@ img {
     outline: none;
     box-shadow: 0 0 0 0.3rem #79cfd4;
 }
+
+.paymentSuccess {
+    display: flex;
+    max-width: 50rem;
+    margin: 5rem auto;
+    width: 100%;
+}
+
+.paymentSuccess > h1 {
+    font-size: 4rem;
+}
+
+.toast {
+    font-size: 1.8rem;
+}
