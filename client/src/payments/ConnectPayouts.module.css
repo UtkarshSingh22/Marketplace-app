@@ -17,7 +17,7 @@
     padding: 3rem;
     gap: 3.2rem;
     border-radius: 0.8rem;
-    box-shadow: 0 2rem 3rem rgba(0,0,0,0.5);
+    box-shadow: 0 2rem 3rem rgba(0, 0, 0, 0.5);
 }
 .icon {
     width: 10rem;
@@ -47,7 +47,7 @@
     font-size: 1.6rem;
 }
 .form > div > input {
-    height: 3rem;
+    height: 3.4rem;
     border-radius: 4px;
     font-size: 1.8rem;
 }
@@ -57,4 +57,13 @@
     font-size: 2rem;
     background-color: #3fbac2;
     color: #fff;
+    border-radius: 4px;
+    transition: all 0.3s;
+    border: 3px solid #3fbac2;
+    font-weight: 600;
+}
+.form > button:hover {
+    border: 3px solid #3fbac2;
+    background-color: #fff;
+    color: rgb(36, 36, 36);
 }

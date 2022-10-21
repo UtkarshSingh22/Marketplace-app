@@ -72,20 +72,22 @@
 .para {
     font-size: 1.4rem;
 }
-.small, .small2 {
+.small,
+.small2 {
     font-size: 1.2rem;
 }
-.small2{
+.small2 {
     margin-top: -1.4rem;
 }
 .content > button {
     border-radius: 6px;
     color: rgb(36, 36, 36);
-    background-image: linear-gradient(to right, #3fbac2, #d9f1f3);
+    background-color: #3fbac2;
+    font-weight: 600;
     transition: all 0.3s;
 }
 .content > button:hover {
-    background-image: linear-gradient(to right, #2c8288, #65c8ce);
+    background-color: rgb(36, 36, 36);
     color: #fff;
     border: 2px solid rgb(36, 36, 36);
 }

@@ -1,9 +1,11 @@
-import { Fragment, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import { searchListings } from "../actions/hotel";
+import Footer from "../components/Footer";
 import Search from "../components/forms/Search";
 import Hotel from "../components/Hotel";
+import styles from "./SearchResults.module.css";
 
 const SearchResults = () => {
     const [searchParams] = useSearchParams();
@@ -25,14 +27,18 @@ const SearchResults = () => {
     }, [window.location.search]);
 
     return (
-        <Fragment>
-            <Search />
-            <div>
-                {hotels.map((hotel) => {
-                    return <Hotel hotel={hotel} key={hotel._id} />;
-                })}
-            </div>
-        </Fragment>
+        <section className={styles.hotelsParent}>
+            <article className={styles.hotels}>
+                <h1>Search Results</h1>
+                <Search />
+                <div className={styles.hotelsList}>
+                    {hotels.map((hotel) => {
+                        return <Hotel hotel={hotel} key={hotel._id} />;
+                    })}
+                </div>
+            </article>
+            <Footer />
+        </section>
     );
 };
 
