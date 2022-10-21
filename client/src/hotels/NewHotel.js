@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { createHotel } from "../actions/hotel";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";

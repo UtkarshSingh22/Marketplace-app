@@ -1,10 +1,11 @@
-import { Fragment, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { read, updateHotel } from "../actions/hotel";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { useNavigate, useParams } from "react-router-dom";
 import { convertDate } from "../utils/convertDate";
 import HotelCreateForm from "../components/forms/HotelCreateForm";
+import styles from "./EditHotel.module.css";
 
 const EditHotel = () => {
     const params = useParams();
@@ -112,18 +113,22 @@ const EditHotel = () => {
     };
 
     return (
-        <Fragment>
-            <h2>Edit Hotel</h2>
-            <img src={preview} alt="preview_image" />
-            <HotelCreateForm
-                changeHandler={changeHandler}
-                imageChangeHandler={imageChangeHandler}
-                formSubmitHandler={formSubmitHandler}
-                values={values}
-                preview={preview}
-                edit={true}
-            />
-        </Fragment>
+        <section className={styles.new}>
+            <div className={styles.main}>
+                <h2>Edit Hotel</h2>
+                <div className={styles.content}>
+                    <img src={preview} alt="preview_image" />
+                    <HotelCreateForm
+                        changeHandler={changeHandler}
+                        imageChangeHandler={imageChangeHandler}
+                        formSubmitHandler={formSubmitHandler}
+                        values={values}
+                        preview={preview}
+                        edit={true}
+                    />
+                </div>
+            </div>
+        </section>
     );
 };
 
