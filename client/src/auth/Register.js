@@ -1,8 +1,10 @@
-import { Fragment, useState } from "react";
+import { useState } from "react";
 import { register } from "../actions/auth";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import RegisterForm from "../components/forms/RegisterForm";
+import styles from "../components/forms/Register.module.css";
+import hotelImg from '../images/hotel-front.jpg'
 
 const Register = () => {
     const navigate = useNavigate();
@@ -48,19 +50,25 @@ const Register = () => {
     };
 
     return (
-        <Fragment>
-            <h1>Register</h1>
-
-            <RegisterForm
-                nameInput={nameInput}
-                emailInput={emailInput}
-                passwordInput={passwordInput}
-                nameInputHandler={nameInputHandler}
-                emailInputHandler={emailInputHandler}
-                passwordInputHandler={passwordInputHandler}
-                formSubmitHandler={formSubmitHandler}
-            />
-        </Fragment>
+        <section className={styles.login}>
+            <div className={styles.main}>
+                <div className={styles.image}>
+                    <img src={hotelImg} />
+                </div>
+                <div className={styles.text}>
+                    <h1>Register</h1>
+                    <RegisterForm
+                        nameInput={nameInput}
+                        emailInput={emailInput}
+                        passwordInput={passwordInput}
+                        nameInputHandler={nameInputHandler}
+                        emailInputHandler={emailInputHandler}
+                        passwordInputHandler={passwordInputHandler}
+                        formSubmitHandler={formSubmitHandler}
+                    />
+                </div>
+            </div>
+        </section>
     );
 };
 

@@ -6,6 +6,7 @@ import { authActions } from "../store/slices/auth";
 import { useNavigate } from "react-router-dom";
 import LoginForm from "../components/forms/LoginForm";
 import styles from "../components/forms/Login.module.css";
+import hotelImg from "../images/hotel-top.jpg";
 
 const Login = () => {
     const dispatch = useDispatch();
@@ -50,15 +51,20 @@ const Login = () => {
     };
     return (
         <section className={styles.login}>
-            <div>
-                <h1>Login</h1>
-                <LoginForm
-                    emailInput={emailInput}
-                    passwordInput={passwordInput}
-                    emailInputHandler={emailInputHandler}
-                    passwordInputHandler={passwordInputHandler}
-                    formSubmitHandler={formSubmitHandler}
-                />
+            <div className={styles.main}>
+                <div className={styles.image}>
+                    <img src={hotelImg} />
+                </div>
+                <div className={styles.text}>
+                    <h1>Login</h1>
+                    <LoginForm
+                        emailInput={emailInput}
+                        passwordInput={passwordInput}
+                        emailInputHandler={emailInputHandler}
+                        passwordInputHandler={passwordInputHandler}
+                        formSubmitHandler={formSubmitHandler}
+                    />
+                </div>
             </div>
         </section>
     );

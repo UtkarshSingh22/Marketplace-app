@@ -1,0 +1,73 @@
+.login {
+    display: flex;
+    flex-direction: column;
+    height: 88.77vh;
+    justify-content: center;
+    align-items: center;
+    max-width: 60rem;
+    margin: 0 auto;
+    padding: 5rem;
+}
+.main {
+    display: flex;
+    width: 100rem;
+    justify-content: space-between;
+    border-radius: 3rem;
+    overflow: hidden;
+    box-shadow: 0 2rem 2rem rgba(0, 0, 0, 0.3);
+}
+
+.image > img {
+    height: 100%;
+    width: auto;
+}
+.text {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 4.8rem;
+    color: #3fbac2;
+    background-color: rgb(36, 36, 36);
+}
+.text > h1 {
+    font-size: 5.2rem;
+}
+.inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+.inputs > label {
+    font-size: 2rem;
+    text-transform: uppercase;
+}
+.inputs > input {
+    font-size: 2.4rem;
+    height: 3.6rem;
+    width: 34rem;
+    background-color: #d9f1f3;
+}
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 3.2rem;
+    align-items: center;
+}
+.form > button {
+    height: 3.6rem;
+    margin-top: 3.6rem;
+    width: 60%;
+    font-size: 2.4rem;
+    display: flex;
+    justify-content: center;
+    background-color: #3fbac2;
+    color: rgb(36, 36, 36);
+}
+.form > button:hover {
+    background-color: #d9f1f3;
+    color: rgb(36, 36, 36);
+    border: 3px solid #3fbac2;
+}
