@@ -6,6 +6,8 @@ import { toast } from "react-toastify";
 import { userHotelBookings } from "../actions/hotel";
 import { useSelector } from "react-redux";
 import BookingCard from "../components/BookingCard";
+import styles from "./Dashboard.module.css";
+import Footer from "../components/Footer";
 
 const Dashboard = () => {
     const { auth } = useSelector((state) => ({ ...state }));
@@ -29,28 +31,33 @@ const Dashboard = () => {
     };
 
     return (
-        <Fragment>
-            <ConnectNav />
-            <DashboardNav />
-            <div>
-                <h2>Your Bookings</h2>
+        <section className={styles.main}>
+            <nav className={styles.dashNav}>
+                <ConnectNav />
+                <DashboardNav />
+            </nav>
+            <div className={styles.content}>
+                <div className={styles.title}>
+                    <Link to="/" className={styles.link}>
+                        Browse Hotels
+                    </Link>
+                    <h2>Your Bookings</h2>
+                </div>
+                <div className={styles.bookings}>
+                    {bookings.map((booking) => {
+                        return (
+                            <BookingCard
+                                key={booking._id}
+                                hotel={booking.hotelId}
+                                user={booking.userId}
+                                id={booking._id}
+                            />
+                        );
+                    })}
+                </div>
             </div>
-            <div>
-                <Link to="/">Browse Hotels</Link>
-            </div>
-            <div>
-                {bookings.map((booking) => {
-                    return (
-                        <BookingCard
-                            key={booking._id}
-                            hotel={booking.hotelId}
-                            user={booking.userId}
-                            id={booking._id}
-                        />
-                    );
-                })}
-            </div>
-        </Fragment>
+            <Footer />
+        </section>
     );
 };
 

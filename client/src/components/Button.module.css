@@ -17,3 +17,8 @@
     color: #fff;
     border: 2px solid #39a7af;
 }
+.button:disabled {
+    background-color: grey;
+}
+.button:disabled:hover {
+}

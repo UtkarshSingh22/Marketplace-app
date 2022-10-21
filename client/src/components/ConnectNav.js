@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import { getBalance } from "../actions/payments";
 import { toast } from "react-toastify";
 import { sellerHotels } from "../actions/hotel";
+import styles from "./ConnectNav.module.css";
+import { Link } from "react-router-dom";
 
 const ConnectNav = () => {
     const { auth } = useSelector((state) => ({ ...state }));
@@ -37,15 +39,22 @@ const ConnectNav = () => {
     };
 
     return (
-        <div>
-            <div>
-                <div>{user.name[0]}</div>
+        <section className={styles.main}>
+            <div className={styles.name}>
+                <p>{user.name[0]}</p>
                 <h2>{user.name}</h2>
             </div>
+
             {auth && auth.user && (
-                <div>{isSeller && <div>Balance: ₹{balance}</div>}</div>
+                <div className={styles.balance}>
+                    {isSeller && (
+                        <div>
+                            Balance: <p>₹{balance}</p>
+                        </div>
+                    )}
+                </div>
             )}
-        </div>
+        </section>
     );
 };
 

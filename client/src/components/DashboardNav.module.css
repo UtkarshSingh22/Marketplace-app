@@ -1,0 +1,19 @@
+.main {
+    display: flex;
+    width: 40vw;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 6.4rem;
+    list-style: none;
+    background-color: #9fdde1;
+}
+
+.main > li > a {
+    text-decoration: none;
+    font-size: 2rem;
+    color: rgb(36, 36, 36);
+}
+
+.active {
+    border-bottom: 3px solid #555;
+}

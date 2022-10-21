@@ -1,14 +1,15 @@
 import { Link } from "react-router-dom";
+import styles from "./DashboardNav.module.css";
 
 const DashboardNav = () => {
     const active = window.location.pathname;
 
     return (
-        <ul>
+        <ul className={styles.main}>
             <li>
                 <Link
                     to="/dashboard"
-                    className={`${active === "/dashboard" && "active"}`}
+                    className={`${active === "/dashboard" && styles.active}`}
                 >
                     Your Bookings
                 </Link>
@@ -16,7 +17,9 @@ const DashboardNav = () => {
             <li>
                 <Link
                     to="/dashboard/seller"
-                    className={`${active === "/dashboard/seller" && "active"}`}
+                    className={`${
+                        active === "/dashboard/seller" && styles.active
+                    }`}
                 >
                     Your Hotels
                 </Link>
