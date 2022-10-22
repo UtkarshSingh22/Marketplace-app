@@ -45,3 +45,20 @@
     z-index: 20;
     background-color: rgba(0, 0, 0, 0.75);
 }
+
+@media (max-width: 72em) {
+    .modal {
+        width: 60vw;
+    }
+}
+@media (max-width: 42em) {
+    .title {
+        font-size: 1.2rem;
+    }
+    .modal > p {
+        font-size: 1.2rem;
+    }
+    .modal {
+        padding: 1.8rem;
+    }
+}

@@ -91,3 +91,39 @@
     color: #fff;
     border: 2px solid rgb(36, 36, 36);
 }
+
+@media (max-width: 62em) {
+    .nav {
+        flex-direction: column;
+    }
+}
+@media (max-width: 35em) {
+    .title > h2 {
+        font-size: 2.8rem;
+    }
+    .link {
+        width: 30rem;
+        font-size: 1.8rem;
+    }
+    .content > h2 {
+        font-size: 2.2rem;
+    }
+    .icon {
+        width: 6rem;
+        height: auto;
+        color: #32959b;
+    }
+    .content > h3 {
+        font-size: 1.4rem;
+    }
+    .para {
+        font-size: 1.2rem;
+    }
+    .small,
+    .small2 {
+        font-size: 1rem;
+    }
+    .content > button {
+        font-size: 1.6rem;
+    }
+}

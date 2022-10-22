@@ -67,3 +67,60 @@
     font-size: 1.6rem;
     padding: 0.6rem 1rem;
 }
+
+@media (max-width: 72em) {
+    .hotel {
+        width: 80rem;
+        gap: 2rem;
+    }
+    .description > h2 {
+        font-size: 1.6rem;
+    }
+}
+@media (max-width: 54em) {
+    .hotel {
+        width: 60rem;
+        gap: 2.4rem;
+        padding: 1.6rem;
+    }
+    .img > img {
+        width: 30rem;
+        height: auto;
+    }
+    .content {
+        gap: 1.4rem;
+    }
+    .description > h2 {
+        font-size: 1.2rem;
+    }
+    .text > h3 {
+        font-size: 1.8rem;
+    }
+    .text > p {
+        font-size: 1.2rem;
+    }
+    .price {
+        font-size: 1.2rem;
+        padding: 0.6rem;
+    }
+    .btn > button {
+        font-size: 1.2rem;
+    }
+    .text {
+        gap: 0.6rem;
+    }
+}
+
+@media (max-width: 42em) {
+    .hotel {
+        flex-direction: column;
+        width: 35rem;
+    }
+    .description > h2 {
+        font-size: 1.1rem;
+    }
+    .img > img {
+        width: 32rem;
+        height: auto;
+    }
+}

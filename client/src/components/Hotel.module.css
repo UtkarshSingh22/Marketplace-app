@@ -57,12 +57,16 @@
     border-radius: 4px;
     color: rgb(36, 36, 36);
 }
-.btn > button {
+.btn > button,
+.btn > a {
     background-color: #fff;
     border-radius: 4px;
     color: rgb(36, 36, 36);
     font-size: 1.6rem;
     padding: 0.6rem 1rem;
+}
+.btn > a:hover {
+    color: #fff;
 }
 .link {
     color: #fff;
@@ -82,6 +86,7 @@
 @media (max-width: 72em) {
     .hotel {
         width: 80rem;
+        gap: 2rem;
     }
 }
 @media (max-width: 54em) {
@@ -105,17 +110,21 @@
     .price {
         font-size: 1.2rem;
     }
-    .btn > button{
+    .btn > button,
+    .btn > a {
         font-size: 1.2rem;
     }
-    .text{
+    .text {
         gap: 0.6rem;
     }
 }
 
-@media (max-width: 42em){ 
-    .hotel{
+@media (max-width: 42em) {
+    .hotel {
         flex-direction: column;
         width: 35rem;
+    }
+    .text {
+        margin-bottom: 1.5rem;
     }
 }

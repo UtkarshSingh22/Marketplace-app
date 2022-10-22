@@ -3,9 +3,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { authActions } from "../store/slices/auth";
 import Logo from "../images/logo.png";
 import styles from "./Navigation.module.css";
-import { Fragment, useState } from "react";
+import { useState } from "react";
 import { X, List } from "phosphor-react";
-import { produceWithPatches } from "immer";
 
 const Navigation = () => {
     const loggedInUser = useSelector((state) => state.auth);
@@ -15,7 +14,6 @@ const Navigation = () => {
     const [navOpen, setNavOpen] = useState(false);
 
     const logoutHandler = () => {
-        navOpen(false)
         dispatch(authActions.logout());
         window.localStorage.removeItem("auth");
         navigate("/login");
@@ -116,7 +114,7 @@ const Navigation = () => {
                     {!loggedInUser && (
                         <Link
                             to="/register"
-                            className={styles.register}
+                            className={styles.registerMob}
                             onClick={closeNav}
                         >
                             Register

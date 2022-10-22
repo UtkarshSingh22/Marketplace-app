@@ -21,3 +21,13 @@
 .active {
     border-bottom: 3px solid rgb(36, 36, 36);
 }
+
+@media (max-width: 62em) {
+    .main {
+        width: 100vw;
+        height: 5rem;
+    }
+    .main > li > a{
+        font-size: 1.6rem;
+    }
+}

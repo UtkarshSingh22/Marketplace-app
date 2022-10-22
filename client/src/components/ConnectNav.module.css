@@ -45,3 +45,66 @@
     color: white;
     letter-spacing: 1.6px;
 }
+
+@media (max-width: 85em) {
+    .main {
+        padding-left: 10rem;
+        gap: 4rem;
+    }
+    .balance {
+        padding-right: 10rem;
+    }
+}
+@media (max-width: 72em) {
+    .main {
+        padding-left: 7rem;
+        gap: 3rem;
+    }
+    .balance {
+        padding-right: 7rem;
+    }
+}
+@media (max-width: 62em) {
+    .main {
+        width: 100vw;
+        height: 5rem;
+    }
+    .name {
+        font-size: 1.4rem;
+    }
+    .name > p {
+        font-size: 2rem;
+        width: 3.4rem;
+        height: 3.4rem;
+    }
+    .balance > div > p {
+        font-size: 1.4rem;
+    }
+}
+@media (max-width: 35em) {
+    .main {
+        width: 100%;
+        height: 5rem;
+        padding-left: 3rem;
+        gap: 2rem;
+    }
+    .name {
+        font-size: 1.2rem;
+        gap: 0.2rem;
+    }
+    .name > p {
+        font-size: 1.6rem;
+        width: 3rem;
+        height: 3rem;
+    }
+    .balance > div {
+        gap: 0.2rem;
+    }
+    .balance > div > p {
+        font-size: 1.2rem;
+    }
+    .balance {
+        font-size: 1.4rem;
+        padding-right: 3rem;
+    }
+}

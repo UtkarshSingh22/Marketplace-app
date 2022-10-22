@@ -90,6 +90,9 @@
     height: auto;
     z-index: 100;
 }
+.registerMob:hover {
+    background-color: #3fbac2;
+}
 
 @media (max-width: 85em) {
     .nav {
@@ -131,7 +134,8 @@
         gap: 6rem;
         transition: all 0.3s;
     }
-    .mobNav > a {
+    .mobNav > a,
+    .mobNav > p {
         text-decoration: none;
         font-size: 3.2rem;
         border: 0;
@@ -141,11 +145,12 @@
         justify-content: center;
         align-items: center;
     }
-    .mobNav > a:focus {
+    .mobNav > a:focus,
+    .mobNav > p:focus {
         background-color: #3fbac2;
     }
 }
-@media (max-width: 35em){
+@media (max-width: 35em) {
     .nav {
         gap: 4rem;
     }
