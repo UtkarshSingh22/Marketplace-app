@@ -19,12 +19,25 @@
     font-size: 1.6rem;
 }
 .button > button {
-    border: 2px solid #ecf8f9;
-    background-color: #ecf8f9;
+    border: 2px solid #d9f1f3;
+    background-color: #d9f1f3;
     transition: all 0.2s;
+    height: 4rem;
 }
 .button > button:hover {
-    background-color: rgb(36, 36, 36);
-    color: #fff;
     border-color: rgb(36, 36, 36);
+}
+
+@media (max-width: 72em){ 
+    .input{
+        height: 3rem;
+        width: 24rem;
+    }
+    .inputs > label {
+        font-size: 1.4rem;
+    }
+    .button > button{
+        height: 3rem;
+    }
+
 }

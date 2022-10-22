@@ -9,6 +9,10 @@ medium - 500
 semi-bold - 600
 bold - 700
 
+@media (max-width: 85em) { 1360px
+@media (max-width: 72em){ 1152px
+@media (max-width: 62em){ 992px
+
 Line Heights
 default : 1
 small - 1.05

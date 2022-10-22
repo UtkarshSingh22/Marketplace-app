@@ -78,3 +78,9 @@
     background-color: rgb(36, 36, 36);
     border: 2px solid #3fbac2;
 }
+
+@media (max-width: 72em) {
+    .hotel {
+        width: 80rem;
+    }
+}

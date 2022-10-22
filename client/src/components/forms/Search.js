@@ -58,7 +58,7 @@ const Search = () => {
 
             <div className={styles.button}>
                 <button onClick={submitHandler}>
-                    <MagnifyingGlass size={32} />
+                    <MagnifyingGlass size={32} className={styles.icon} />
                 </button>
             </div>
         </section>

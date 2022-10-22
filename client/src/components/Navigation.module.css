@@ -42,7 +42,7 @@
 .navSec > a:hover {
     color: #39a7af;
 }
-.logout:hover{
+.logout:hover {
     color: red;
 }
 .register.active {
@@ -78,4 +78,24 @@
 .dashboard.active,
 .login.active {
     border-bottom: 3px solid #39a7af;
+}
+
+@media (max-width: 85em) {
+    .nav {
+        gap: 15rem;
+        padding: 1.2rem 13rem;
+    }
+}
+
+@media (max-width: 72em) {
+    .nav {
+        gap: 8rem;
+        padding: 1.2rem 8rem;
+    }
+    .navSec {
+        gap: 10rem;
+    }
+}
+@media (max-width: 62em){ 
+    
 }

@@ -58,10 +58,9 @@
     align-items: center;
     font-weight: 600;
     transition: all 0.4s;
-}
-.register {
     letter-spacing: 1.2px;
 }
+
 .buttons > button {
     background-color: #fff;
     color: rgb(36, 36, 36);
@@ -109,4 +108,74 @@ footer {
     padding: 0.8rem;
     background-color: #c5eaed;
     width: 100vw;
+}
+
+@media (max-width: 85em) {
+    .intro {
+        max-width: 110rem;
+    }
+    .introText > h1 {
+        font-size: 5.2rem;
+    }
+    .introText > h2 {
+        font-size: 3rem;
+    }
+    .introText > p {
+        font-size: 2rem;
+    }
+}
+@media (max-width: 72em) {
+    .intro {
+        max-width: 90rem;
+        padding: 6rem 0;
+    }
+    .introText > h1 {
+        font-size: 4rem;
+    }
+    .introText > h2 {
+        font-size: 2.4rem;
+    }
+    .introText > p {
+        font-size: 1.8rem;
+    }
+    .register {
+        padding: 0.6rem 1.6rem;
+    }
+    .buttons {
+        gap: 3.2rem;
+    }
+    .mainImg {
+        width: 50rem;
+    }
+    .introText {
+        gap: 2.4rem;
+    }
+    .hotels {
+        max-width: 90rem;
+    }
+    .hotels > h1 {
+        font-size: 4rem;
+    }
+    footer {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 62em) {
+    .intro {
+        flex-direction: column;
+    }
+    .introText {
+        width: 90%;
+        display: flex;
+        align-items: center;
+        text-align: center;
+    }
+    .mainImg{
+        width: 70rem;
+    }
+    .introImage {
+        width: 100%;
+        justify-content: center;
+    }
 }
