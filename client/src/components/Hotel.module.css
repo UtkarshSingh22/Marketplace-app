@@ -84,3 +84,38 @@
         width: 80rem;
     }
 }
+@media (max-width: 54em) {
+    .hotel {
+        width: 60rem;
+        gap: 2.4rem;
+    }
+    .img > img {
+        width: 30rem;
+        height: auto;
+    }
+    .content {
+        gap: 1.4rem;
+    }
+    .description > h2 {
+        font-size: 2rem;
+    }
+    .text > p {
+        font-size: 1.2rem;
+    }
+    .price {
+        font-size: 1.2rem;
+    }
+    .btn > button{
+        font-size: 1.2rem;
+    }
+    .text{
+        gap: 0.6rem;
+    }
+}
+
+@media (max-width: 42em){ 
+    .hotel{
+        flex-direction: column;
+        width: 35rem;
+    }
+}

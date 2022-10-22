@@ -172,10 +172,49 @@ footer {
         text-align: center;
     }
     .mainImg{
-        width: 70rem;
+        width: 60rem;
     }
     .introImage {
         width: 100%;
         justify-content: center;
+    }
+}
+@media (max-width: 42em){ 
+    .mainImg{
+        width: 40rem;
+    }
+    .hotels > h1 {
+        font-size: 3.4rem;
+    }
+}
+@media (max-width: 35em){
+    .intro {
+        max-width: 40rem;
+        padding: 3rem 0;
+    }
+    .introText > h1 {
+        font-size: 3.2rem;
+    }
+    .introText > h2 {
+        font-size: 2.2rem;
+    }
+    .introText > p {
+        font-size: 1.4rem;
+    }
+    .register {
+        padding: 0.2rem 1.6rem;
+        font-size: 1.6rem;
+    }
+    .buttons {
+        gap: 2.4rem;
+    }
+    .buttons>button{
+        font-size: 1.6rem;
+    }
+    .mainImg{
+        width: 30rem;
+    }
+    .login {
+        font-size: 1.4rem;
     }
 }

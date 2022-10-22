@@ -28,16 +28,42 @@
     border-color: rgb(36, 36, 36);
 }
 
-@media (max-width: 72em){ 
-    .input{
+@media (max-width: 72em) {
+    .input {
         height: 3rem;
         width: 24rem;
     }
     .inputs > label {
         font-size: 1.4rem;
     }
-    .button > button{
+    .button > button {
         height: 3rem;
     }
-
+}
+@media (max-width: 54em) {
+    .input {
+        height: 3rem;
+        width: 18rem;
+        font-size: 1.6rem;
+    }
+    .inputs > label {
+        font-size: 1.2rem;
+    }
+}
+@media (max-width: 42em){ 
+    .cover {
+        flex-direction: column;
+        align-items: center;
+    }
+    .input {
+        height: 3rem;
+        width: 30rem;
+    }
+    .inputs > label {
+        font-size: 1.2rem;
+    }
+    .icon{
+        width: 4rem;
+        height: auto;
+    }
 }

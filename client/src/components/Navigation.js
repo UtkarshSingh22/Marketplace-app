@@ -3,16 +3,30 @@ import { useSelector, useDispatch } from "react-redux";
 import { authActions } from "../store/slices/auth";
 import Logo from "../images/logo.png";
 import styles from "./Navigation.module.css";
+import { Fragment, useState } from "react";
+import { X, List } from "phosphor-react";
+import { produceWithPatches } from "immer";
 
 const Navigation = () => {
     const loggedInUser = useSelector((state) => state.auth);
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
+    const [navOpen, setNavOpen] = useState(false);
+
     const logoutHandler = () => {
+        navOpen(false)
         dispatch(authActions.logout());
         window.localStorage.removeItem("auth");
         navigate("/login");
+    };
+
+    const closeNav = () => {
+        navOpen(false);
+    };
+
+    const toggleMenu = () => {
+        setNavOpen((prevState) => !prevState);
     };
 
     const active = window.location.pathname;
@@ -72,6 +86,59 @@ const Navigation = () => {
                     <p onClick={logoutHandler} className={styles.logout}>
                         Logout
                     </p>
+                )}
+            </div>
+            {navOpen && (
+                <div className={styles.mobNav}>
+                    <Link to="/" className={styles.home} onClick={closeNav}>
+                        Home
+                    </Link>
+
+                    {loggedInUser && (
+                        <Link
+                            to="/dashboard"
+                            className={styles.dashboard}
+                            onClick={closeNav}
+                        >
+                            Dashboard
+                        </Link>
+                    )}
+
+                    {!loggedInUser && (
+                        <Link
+                            to="/login"
+                            className={styles.login}
+                            onClick={closeNav}
+                        >
+                            Login
+                        </Link>
+                    )}
+                    {!loggedInUser && (
+                        <Link
+                            to="/register"
+                            className={styles.register}
+                            onClick={closeNav}
+                        >
+                            Register
+                        </Link>
+                    )}
+                    {loggedInUser && (
+                        <p onClick={logoutHandler} className={styles.logout}>
+                            Logout
+                        </p>
+                    )}
+                </div>
+            )}
+            <div className={styles.options}>
+                {!navOpen && (
+                    <List
+                        size={32}
+                        className={styles.menu}
+                        onClick={toggleMenu}
+                    />
+                )}
+                {navOpen && (
+                    <X size={32} className={styles.menu} onClick={toggleMenu} />
                 )}
             </div>
         </nav>

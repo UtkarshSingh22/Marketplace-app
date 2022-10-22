@@ -12,6 +12,9 @@ bold - 700
 @media (max-width: 85em) { 1360px
 @media (max-width: 72em){ 1152px
 @media (max-width: 62em){ 992px
+@media (max-width: 54em){ 864px
+@media (max-width: 42em){ 672px
+@media (max-width: 35em){ 560px
 
 Line Heights
 default : 1
