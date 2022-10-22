@@ -7,6 +7,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { authActions } from "../store/slices/auth";
 import { Bank } from "phosphor-react";
 import styles from "./ConnectPayouts.module.css";
+import LoadingSpinner from "../components/modals/LoadingSpinner";
 
 const ConnectPayouts = () => {
     const state = useSelector((state) => state.auth.user);
@@ -17,7 +18,8 @@ const ConnectPayouts = () => {
     const [nameInput, setNameInput] = useState(state.name);
     const [accountNum, setAccountNum] = useState("");
     const [ifsc, setIfsc] = useState("");
-
+    const [isLoading, setIsLoading] = useState(false);
+    
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
@@ -34,6 +36,7 @@ const ConnectPayouts = () => {
     };
 
     const formSubmitHandler = async (event) => {
+        setIsLoading(true);
         event.preventDefault();
 
         try {
@@ -57,10 +60,12 @@ const ConnectPayouts = () => {
         } catch (err) {
             toast.error(err.response.data);
         }
+        setIsLoading(false);
     };
 
     return (
         <section className={styles.main}>
+            {isLoading && <LoadingSpinner />}
             <div className={styles.content}>
                 <Bank size={64} className={styles.icon} />
                 <h1>Connect your bank account</h1>

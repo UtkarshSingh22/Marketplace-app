@@ -6,10 +6,13 @@ import { convertDate } from "../utils/convertDate";
 import HotelCreateForm from "../components/forms/HotelCreateForm";
 import { useNavigate } from "react-router-dom";
 import styles from "./NewHotel.module.css";
+import LoadingSpinner from "../components/modals/LoadingSpinner";
 
 const NewHotel = () => {
     const { auth } = useSelector((state) => ({ ...state }));
     const { token } = auth;
+
+    const [isLoading, setIsLoading] = useState(false);
 
     const navigate = useNavigate();
 
@@ -39,6 +42,7 @@ const NewHotel = () => {
     const { title, content, location, image, price, from, to, bed } = values;
 
     const formSubmitHandler = async (event) => {
+        setIsLoading(true);
         event.preventDefault();
 
         let hotelData = new FormData();
@@ -60,6 +64,7 @@ const NewHotel = () => {
         } catch (err) {
             toast.error(err.response.data);
         }
+        setIsLoading(false);
     };
 
     const imageChangeHandler = (event) => {
@@ -89,6 +94,7 @@ const NewHotel = () => {
 
     return (
         <section className={styles.new}>
+            {isLoading && <LoadingSpinner />}
             <div className={styles.main}>
                 <h2>Add Hotel</h2>
                 <div className={styles.content}>

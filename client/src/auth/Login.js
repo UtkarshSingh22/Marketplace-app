@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import LoginForm from "../components/forms/LoginForm";
 import styles from "../components/forms/Login.module.css";
 import hotelImg from "../images/hotel-top.jpg";
+import LoadingSpinner from "../components/modals/LoadingSpinner";
 
 const Login = () => {
     const dispatch = useDispatch();
@@ -14,6 +15,7 @@ const Login = () => {
 
     const [emailInput, setEmailInput] = useState("");
     const [passwordInput, setPasswordInput] = useState("");
+    const [isLoading, setIsLoading] = useState(false);
 
     const emailInputHandler = (event) => {
         setEmailInput(event.target.value);
@@ -24,6 +26,7 @@ const Login = () => {
     };
 
     const formSubmitHandler = async (event) => {
+        setIsLoading(true);
         event.preventDefault();
 
         try {
@@ -45,12 +48,13 @@ const Login = () => {
                 toast("Something went wrong. Please try again!");
             }
         }
-
+        setIsLoading(false);
         setEmailInput("");
         setPasswordInput("");
     };
     return (
         <section className={styles.login}>
+            {isLoading && <LoadingSpinner />}
             <div className={styles.main}>
                 <div className={styles.image}>
                     <img src={hotelImg} />

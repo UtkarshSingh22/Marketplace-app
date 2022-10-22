@@ -1,24 +1,22 @@
 import { isAlreadyBooked, read } from "../actions/hotel";
 import { paymentSuccess } from "../actions/payments";
 import { useNavigate, useParams } from "react-router-dom";
-import { Fragment, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { differenceInDates } from "../utils/differnceInDates";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import Button from "../components/Button";
 import styles from "./ViewHotel.module.css";
+import LoadingSpinner from "../components/modals/LoadingSpinner";
 
 const ViewHotel = () => {
     const params = useParams();
     const [hotel, setHotel] = useState({});
     const [image, setImage] = useState("");
     const [alreadyBooked, setAlreadyBooked] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
 
     const navigate = useNavigate();
-
-    useEffect(() => {
-        loadSellerHotel();
-    }, []);
 
     const { auth } = useSelector((state) => ({ ...state }));
 
@@ -32,12 +30,21 @@ const ViewHotel = () => {
                 }
             );
         }
+        loadSellerHotel();
     }, []);
 
     const loadSellerHotel = async () => {
-        let res = await read(params.hotelId);
-        setHotel(res.data);
-        setImage(`${process.env.REACT_APP_API}/hotel/image/${params.hotelId}`);
+        setIsLoading(true);
+        try {
+            let res = await read(params.hotelId);
+            setHotel(res.data);
+            setImage(
+                `${process.env.REACT_APP_API}/hotel/image/${params.hotelId}`
+            );
+        } catch (err) {
+            toast.error("Unable to load your allHotels, Please refresh.");
+        }
+        setIsLoading(false);
     };
 
     const diffDays = `${differenceInDates(hotel.from, hotel.to)}${
@@ -51,6 +58,7 @@ const ViewHotel = () => {
     const message = `Are you sure to book rooms in ${hotel.title}?`;
 
     const clickHandler = async () => {
+        setIsLoading(true);
         try {
             if (!auth) {
                 navigate("/login");
@@ -81,10 +89,12 @@ const ViewHotel = () => {
         } catch (error) {
             toast.error("Transaction failed, Please try again.");
         }
+        setIsLoading(false);
     };
 
     return (
         <section className={styles.main}>
+            {isLoading && <LoadingSpinner />}
             <div className={styles.card}>
                 <header>
                     <h2>{hotel.title}</h2>

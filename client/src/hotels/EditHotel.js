@@ -6,10 +6,13 @@ import { useNavigate, useParams } from "react-router-dom";
 import { convertDate } from "../utils/convertDate";
 import HotelCreateForm from "../components/forms/HotelCreateForm";
 import styles from "./EditHotel.module.css";
+import LoadingSpinner from "../components/modals/LoadingSpinner";
 
 const EditHotel = () => {
     const params = useParams();
     const navigate = useNavigate();
+
+    const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
         loadSellerHotel();
@@ -42,22 +45,29 @@ const EditHotel = () => {
     const { title, content, location, image, price, from, to, bed } = values;
 
     const loadSellerHotel = async () => {
-        let res = await read(params.hotelId);
-        setValues((prevState) => {
-            const fromDate = res.data.from;
-            const toDate = res.data.to;
-            return {
-                ...res.data,
-                from: fromDate.split("T")[0],
-                to: toDate.split("T")[0],
-            };
-        });
-        setPreview(
-            `${process.env.REACT_APP_API}/hotel/image/${params.hotelId}`
-        );
+        setIsLoading(true);
+        try {
+            let res = await read(params.hotelId);
+            setValues((prevState) => {
+                const fromDate = res.data.from;
+                const toDate = res.data.to;
+                return {
+                    ...res.data,
+                    from: fromDate.split("T")[0],
+                    to: toDate.split("T")[0],
+                };
+            });
+            setPreview(
+                `${process.env.REACT_APP_API}/hotel/image/${params.hotelId}`
+            );
+        } catch (error) {
+            toast.error("Something went wrong, please try again.");
+        }
+        setIsLoading(false);
     };
 
     const formSubmitHandler = async (event) => {
+        setIsLoading(true);
         event.preventDefault();
 
         let hotelData = new FormData();
@@ -85,6 +95,7 @@ const EditHotel = () => {
         } catch (err) {
             toast.error(err.response.data);
         }
+        setIsLoading(false);
     };
 
     const imageChangeHandler = (event) => {
@@ -114,6 +125,7 @@ const EditHotel = () => {
 
     return (
         <section className={styles.new}>
+            {isLoading && <LoadingSpinner />}
             <div className={styles.main}>
                 <h2>Edit Hotel</h2>
                 <div className={styles.content}>

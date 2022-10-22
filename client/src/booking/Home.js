@@ -8,9 +8,11 @@ import mainImage from "../images/hotel-blue.jpg";
 import { useSelector } from "react-redux";
 import Button from "../components/Button";
 import Footer from "../components/Footer";
+import LoadingSpinner from "../components/modals/LoadingSpinner";
 
 const Home = () => {
     const [hotels, setHotels] = useState([]);
+    const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
         loadAllHotels();
@@ -19,12 +21,15 @@ const Home = () => {
     const loggedInUser = useSelector((state) => state.auth);
 
     const loadAllHotels = async () => {
+        setIsLoading(true);
         let result = await allHotels();
         setHotels(result.data);
+        setIsLoading(false);
     };
 
     return (
         <main>
+            {isLoading && <LoadingSpinner />}
             <div className={styles.mainContent}>
                 <article className={styles.intro}>
                     <div className={styles.introText}>

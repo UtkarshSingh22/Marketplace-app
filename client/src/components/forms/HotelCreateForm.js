@@ -61,6 +61,7 @@ const HotelCreateForm = ({
                     onChange={changeHandler}
                     placeholder="Description"
                     value={content}
+                    required
                 />
 
                 <textarea

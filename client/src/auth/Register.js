@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 import RegisterForm from "../components/forms/RegisterForm";
 import styles from "../components/forms/Register.module.css";
 import hotelImg from "../images/hotel-front.jpg";
+import LoadingSpinner from "../components/modals/LoadingSpinner";
 
 const Register = () => {
     const navigate = useNavigate();
@@ -12,6 +13,7 @@ const Register = () => {
     const [nameInput, setNameInput] = useState("");
     const [emailInput, setEmailInput] = useState("");
     const [passwordInput, setPasswordInput] = useState("");
+    const [isLoading, setIsLoading] = useState(false);
 
     const nameInputHandler = (event) => {
         setNameInput(event.target.value);
@@ -26,6 +28,7 @@ const Register = () => {
     };
 
     const formSubmitHandler = async (event) => {
+        setIsLoading(true);
         event.preventDefault();
 
         try {
@@ -44,6 +47,7 @@ const Register = () => {
             }
         }
 
+        setIsLoading(false);
         setNameInput("");
         setEmailInput("");
         setPasswordInput("");
@@ -51,6 +55,7 @@ const Register = () => {
 
     return (
         <section className={styles.login}>
+            {isLoading && <LoadingSpinner />}
             <div className={styles.main}>
                 <div className={styles.image}>
                     <img src={hotelImg} />

@@ -10,15 +10,18 @@ import styles from "./DashboardSeller.module.css";
 import Footer from "../components/Footer";
 import { Bank } from "phosphor-react";
 import Button from "../components/Button";
+import LoadingSpinner from "../components/modals/LoadingSpinner";
 
 const DashboardSeller = () => {
     const { auth } = useSelector((state) => ({ ...state }));
 
     const [hotels, setHotels] = useState([]);
+    const [isLoading, setIsLoading] = useState(false);
 
     const navigate = useNavigate();
 
     useEffect(() => {
+        setIsLoading(true);
         const toastNoti = window.localStorage.getItem("toast");
         const reload = window.localStorage.getItem("reload");
 
@@ -32,6 +35,7 @@ const DashboardSeller = () => {
         }
 
         loadSellerHotels();
+        setIsLoading(false);
     }, []);
 
     const loadSellerHotels = async () => {
@@ -88,6 +92,7 @@ const DashboardSeller = () => {
 
     return (
         <Fragment>
+            {isLoading && <LoadingSpinner />}
             <section className={styles.main}>
                 <nav className={styles.nav}>
                     <ConnectNav />
