@@ -6,7 +6,6 @@ import Hotel from "../components/Hotel";
 import styles from "./Home.module.css";
 import mainImage from "../images/hotel-blue.jpg";
 import { useSelector } from "react-redux";
-import Button from "../components/Button";
 import Footer from "../components/Footer";
 import LoadingSpinner from "../components/modals/LoadingSpinner";
 
@@ -51,7 +50,9 @@ const Home = () => {
                                     Register
                                 </Link>
                             )}
-                            <Button>Browse hotels &darr;</Button>
+                            <a href="#hotels" className={styles.browse}>
+                                Browse hotels &darr;
+                            </a>
                         </div>
                         {!loggedInUser && (
                             <div className={styles.login}>
@@ -68,7 +69,7 @@ const Home = () => {
                     </div>
                 </article>
             </div>
-            <article className={styles.hotelsParent}>
+            <article className={styles.hotelsParent} id="hotels">
                 <div className={styles.hotels}>
                     <h1>All Hotels</h1>
                     <Search />

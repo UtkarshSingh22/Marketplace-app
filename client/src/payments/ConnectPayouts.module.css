@@ -67,3 +67,32 @@
     background-color: #fff;
     color: rgb(36, 36, 36);
 }
+
+@media (max-width: 35em) {
+    .content {
+        width: 30rem;
+        padding: 1.6rem;
+        gap: 2.2rem;
+    }
+    .icon {
+        width: 6rem;
+    }
+    .content > h1 {
+        font-size: 1.6rem;
+    }
+    .form > div > label {
+        font-size: 1.2rem;
+    }
+    .form > div > input {
+        height: 2.4rem;
+        font-size: 1.2rem;
+    }
+    .form > button {
+        height: 3rem;
+        font-size: 1.6rem;
+        margin-top: 1.6rem;
+    }
+    .content > p {
+        font-size: 1rem;
+    }
+}

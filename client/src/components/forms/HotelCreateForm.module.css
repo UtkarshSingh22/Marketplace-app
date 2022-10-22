@@ -68,3 +68,89 @@
     border: 3px solid #3fbac2;
     background-color: rgb(36, 36, 36);
 }
+
+@media (max-width: 85em) {
+    .form > input,
+    .form > select,
+    .image,
+    .date > input {
+        height: 3.4rem;
+        width: 25rem;
+    }
+
+    .form > textarea {
+        max-height: 6rem;
+        min-height: 6rem;
+        max-width: 21rem;
+        min-width: 25rem;
+    }
+    .date {
+        top: -3rem;
+    }
+}
+@media (max-width: 72em) {
+    .form {
+        gap: 0.4rem;
+        column-gap: 1.6rem;
+    }
+    .form > input,
+    .form > select,
+    .image,
+    .date > input {
+        width: 20rem;
+        font-size: 1.6rem;
+    }
+
+    .form > textarea {
+        max-height: 6rem;
+        min-height: 6rem;
+        max-width: 16rem;
+        min-width: 20rem;
+        font-size: 1.8rem;
+    }
+    .date {
+        top: -2rem;
+    }
+    .date > label {
+        font-size: 1.2rem;
+    }
+    .btn {
+        font-size: 2rem;
+        position: relative;
+        top: -1rem;
+    }
+}
+@media (max-width: 62em) {
+    .form {
+        width: 100%;
+        justify-items: center;
+    }
+}
+@media (max-width: 35em) {
+    .form > input,
+    .form > select,
+    .image,
+    .date > input {
+        width: 16rem;
+        height: 3rem;
+        font-size: 1.2rem;
+    }
+
+    .form > textarea {
+        max-height: 6rem;
+        min-height: 6rem;
+        max-width: 12rem;
+        min-width: 16rem;
+        font-size: 1.4rem;
+    }
+    .date {
+        top: -1rem;
+    }
+    .date > label {
+        font-size: 1rem;
+    }
+    .btn {
+        font-size: 1.6rem;
+        top: 0rem;
+    }
+}
