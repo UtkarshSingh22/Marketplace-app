@@ -73,22 +73,24 @@ const HotelCreateForm = ({
                 />
 
                 <div className={styles.date}>
-                    <label>From date</label>
+                    <label htmlFor="from">From date</label>
                     <input
                         type="date"
                         name="from"
                         onChange={changeHandler}
                         value={from}
+                        id="from"
                         min={new Date().toISOString().split("T")[0]}
                         required
                     />
                 </div>
 
                 <div className={styles.date}>
-                    <label>To date</label>
+                    <label htmlFor="to">To date</label>
                     <input
                         type="date"
                         name="to"
+                        id="to"
                         onChange={changeHandler}
                         value={to}
                         min={from}

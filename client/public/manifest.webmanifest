@@ -1,0 +1,14 @@
+{
+    "icons": [
+        {
+            "src": "images/windLogo-192.jpg",
+            "type": "image/png",
+            "sizes": "192x192"
+        },
+        {
+            "src": "images/windLogo-512.jpg",
+            "type": "image/png",
+            "sizes": "512x512"
+        }
+    ]
+}

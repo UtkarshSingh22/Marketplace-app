@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import Search from "../components/forms/Search";
 import Hotel from "../components/Hotel";
 import styles from "./Home.module.css";
-import mainImage from "../images/hotel-blue.jpg";
+import mainImage from "../images/hotel-blue_1200x900.jpg";
 import { useSelector } from "react-redux";
 import Footer from "../components/Footer";
 import LoadingSpinner from "../components/modals/LoadingSpinner";
@@ -76,7 +76,11 @@ const Home = () => {
                         )}
                     </div>
                     <div className={styles.introImage}>
-                        <img src={mainImage} className={styles.mainImg} />
+                        <img
+                            src={mainImage}
+                            className={styles.mainImg}
+                            alt="blue hotel"
+                        />
                     </div>
                 </article>
             </div>

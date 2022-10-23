@@ -68,6 +68,7 @@ body {
     font-weight: 400;
     color: #3b4048;
     overflow-x: hidden;
+    padding-top: 8rem;
 }
 
 /* dashboard nav active class*/
@@ -96,4 +97,3 @@ img {
 .toast {
     font-size: 1.8rem;
 }
-

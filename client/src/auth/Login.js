@@ -6,7 +6,7 @@ import { authActions } from "../store/slices/auth";
 import { useNavigate } from "react-router-dom";
 import LoginForm from "../components/forms/LoginForm";
 import styles from "../components/forms/Login.module.css";
-import hotelImg from "../images/hotel-top.jpg";
+import hotelImg from "../images/hotel-top_904x1130.jpg";
 import LoadingSpinner from "../components/modals/LoadingSpinner";
 
 const Login = () => {
@@ -57,7 +57,7 @@ const Login = () => {
             {isLoading && <LoadingSpinner />}
             <div className={styles.main}>
                 <div className={styles.image}>
-                    <img src={hotelImg} />
+                    <img src={hotelImg} alt="hotel top view" />
                 </div>
                 <div className={styles.text}>
                     <h1>Login</h1>

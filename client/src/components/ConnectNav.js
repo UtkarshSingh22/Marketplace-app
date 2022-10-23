@@ -58,7 +58,7 @@ const ConnectNav = () => {
                             Balance: <p>₹{balance}</p>
                         </div>
                     )}
-                    {!isSeller && <div>The sale is LIVE. Hurry!</div>}
+                    {!isSeller && <div>The offers are LIVE. Hurry!</div>}
                 </div>
             )}
         </section>

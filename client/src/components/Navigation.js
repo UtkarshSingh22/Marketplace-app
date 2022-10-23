@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { authActions } from "../store/slices/auth";
-import Logo from "../images/logo.png";
+import Logo from "../images/windLogo.jpg";
 import styles from "./Navigation.module.css";
 import { useState } from "react";
 import { X, List } from "phosphor-react";
@@ -34,7 +34,11 @@ const Navigation = () => {
             <div className={styles.navFirst}>
                 <div className={styles.logoTop}>
                     <h1>H</h1>
-                    <img src={Logo} className={styles.logo} />
+                    <img
+                        src={Logo}
+                        className={styles.logo}
+                        alt="hotelswind logo"
+                    />
                     <h1>TELSWIND</h1>
                 </div>
                 <div className={styles.logoBottom}>BOOK YOUR STAYS EASILY</div>

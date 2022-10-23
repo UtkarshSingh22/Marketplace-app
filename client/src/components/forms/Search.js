@@ -19,23 +19,25 @@ const Search = () => {
     return (
         <section className={styles.cover}>
             <div className={styles.inputs}>
-                <label>Location</label>
+                <label htmlFor="location">Location</label>
                 <input
                     className={styles.input}
                     placeholder="Bangalore, India"
                     type="text"
                     onChange={(e) => setLocation(e.target.value)}
                     value={location}
+                    id="location"
                     required
                 />
             </div>
 
             <div className={styles.inputs}>
-                <label>From date</label>
+                <label htmlFor="from">From date</label>
                 <input
                     className={styles.input}
                     type="date"
                     name="from"
+                    id="from"
                     onChange={(e) => setFromDate(e.target.value)}
                     value={fromDate}
                     min={new Date().toISOString().split("T")[0]}
@@ -44,11 +46,12 @@ const Search = () => {
             </div>
 
             <div className={styles.inputs}>
-                <label>To date</label>
+                <label htmlFor="to">To date</label>
                 <input
                     className={styles.input}
                     type="date"
                     name="to"
+                    id="to"
                     onChange={(e) => setToDate(e.target.value)}
                     value={toDate}
                     min={fromDate}
@@ -57,7 +60,7 @@ const Search = () => {
             </div>
 
             <div className={styles.button}>
-                <button onClick={submitHandler}>
+                <button aria-label="search" onClick={submitHandler}>
                     <MagnifyingGlass size={32} className={styles.icon} />
                 </button>
             </div>

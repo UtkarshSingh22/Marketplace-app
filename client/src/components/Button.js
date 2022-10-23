@@ -5,7 +5,7 @@ const Button = (props) => {
 
     return (
         <button
-            className={`${classes} ${styles.button}`}
+            className={`${classes} ${styles.commonButton}`}
             onClick={props.onClick}
             {...props}
         >

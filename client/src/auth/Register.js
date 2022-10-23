@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import RegisterForm from "../components/forms/RegisterForm";
 import styles from "../components/forms/Register.module.css";
-import hotelImg from "../images/hotel-front.jpg";
+import hotelImg from "../images/hotel-front_874x1130.jpg";
 import LoadingSpinner from "../components/modals/LoadingSpinner";
 
 const Register = () => {
@@ -58,7 +58,7 @@ const Register = () => {
             {isLoading && <LoadingSpinner />}
             <div className={styles.main}>
                 <div className={styles.image}>
-                    <img src={hotelImg} />
+                    <img src={hotelImg} alt="hotel image" />
                 </div>
                 <div className={styles.text}>
                     <h1>Register</h1>
