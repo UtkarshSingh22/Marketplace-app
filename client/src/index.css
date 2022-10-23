@@ -59,6 +59,7 @@ rgb(36, 36, 36);
 
 html {
     font-size: 62.5%;
+    scroll-behavior: smooth;
 }
 
 body {

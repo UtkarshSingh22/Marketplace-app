@@ -223,7 +223,7 @@ footer {
     .buttons {
         gap: 2.4rem;
     }
-    .buttons > button {
+    .browse {
         font-size: 1.6rem;
     }
     .mainImg {

@@ -26,6 +26,13 @@ const Home = () => {
         setIsLoading(false);
     };
 
+    const smoothScroll = (event) => {
+        event.preventDefault();
+
+        const element = document.querySelector("#hotels");
+        element.scrollIntoView({ behavior: "smooth" });
+    };
+
     return (
         <main>
             {isLoading && <LoadingSpinner />}
@@ -50,7 +57,11 @@ const Home = () => {
                                     Register
                                 </Link>
                             )}
-                            <a href="#hotels" className={styles.browse}>
+                            <a
+                                href="#hotels"
+                                className={styles.browse}
+                                onClick={smoothScroll}
+                            >
                                 Browse hotels &darr;
                             </a>
                         </div>
