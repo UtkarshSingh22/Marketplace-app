@@ -1,6 +1,6 @@
 # Marketplace-app
 
-A hotel booking and selling website named [Hotelswind](https://hotelswind.vercel.app)
+A hotel booking and selling website named [Hotelswind](https://hotelswind.vercel.app).
 
 ## Features
 
