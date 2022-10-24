@@ -2,7 +2,7 @@
 
 A hotel booking and selling website named [Hotelswind](https://hotelswind.vercel.app)
 
-##Features
+## Features
 
 1. The user can register a new account and login.
 2. Check all the available hotels and use search to filter the list.
@@ -11,15 +11,15 @@ A hotel booking and selling website named [Hotelswind](https://hotelswind.vercel
 5. Check the balance if anyone books a hotel which was posted by the user.
 6. Edit the details of a hotel posted by the user.
 
-##Technologies Used
+## Technologies Used
 
-###Frontend: was bootstrapped with Create-React-App
+### Frontend: was bootstrapped with Create-React-App
 1. React JS
 2. Redux 
 3. React routers
 4. Axios
 
-###Backend: Node JS - Used MVC Pattern
+### Backend: Node JS - Used MVC Pattern
 1. Express JS
 2. MongoDB/Mongoose - As a database
 3. JWT for authorization
